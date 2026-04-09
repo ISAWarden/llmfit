@@ -21,7 +21,7 @@ A terminal tool that right-sizes LLM models to your system's RAM, CPU, and GPU. 
 
 Ships with an interactive TUI (default) and a classic CLI mode. Supports multi-GPU setups, MoE architectures, dynamic quantization selection, speed estimation, and local runtime providers (Ollama, llama.cpp, MLX, Docker Model Runner, LM Studio).
 
-**Hardware Simulation** — Press `S` in the TUI to simulate different hardware. Override RAM, VRAM, and CPU cores to instantly see which models would fit on target hardware without leaving the app. A `SIM` badge in the status bar tells you when simulation is active.
+**New: [Hardware Simulation](#hardware-simulation-s)** — Press `S` in the TUI to simulate different hardware. Override RAM, VRAM, and CPU cores to instantly see which models would fit on target hardware without leaving the app.
 
 > **Sister projects:**
 > - [sympozium](https://github.com/sympozium-ai/sympozium/) — managing agents in Kubernetes.
@@ -186,6 +186,8 @@ Plan mode shows estimates for:
 ### Hardware Simulation (`S`)
 
 Press `S` to open the hardware simulation popup. Override RAM, VRAM, and CPU core count to see which models would fit on different target hardware. All model scores, fit levels, and speed estimates are recalculated instantly against the simulated specs.
+
+![Hardware Simulation](simulation.png)
 
 | Key                    | Action                                  |
 |------------------------|-----------------------------------------|
