@@ -693,5 +693,280 @@
     "recommended_settings_source": "readme",
     "recommended_settings_notes": [],
     "checked": "2026-04-20T09:20:16.262089+00:00"
+  },
+  "bartowski/glm-4-9b-chat-GGUF": {
+    "recommended_settings": null,
+    "recommended_settings_source": null,
+    "recommended_settings_notes": [],
+    "checked": "2026-04-21T11:44:46.082200+00:00"
+  },
+  "mradermacher/glm-4-9b-chat-GGUF": {
+    "recommended_settings": null,
+    "recommended_settings_source": null,
+    "recommended_settings_notes": [],
+    "checked": "2026-04-21T11:44:46.521733+00:00"
+  },
+  "unsloth/Qwen3.5-9B-GGUF": {
+    "recommended_settings": null,
+    "recommended_settings_source": null,
+    "recommended_settings_notes": [],
+    "checked": "2026-04-21T11:44:47.108766+00:00"
+  },
+  "mradermacher/Qwen3.5-9B-GGUF": {
+    "recommended_settings": null,
+    "recommended_settings_source": null,
+    "recommended_settings_notes": [],
+    "checked": "2026-04-21T11:44:47.572217+00:00"
+  },
+  "TheBloke/SOLAR-10.7B-Instruct-v1.0-GGUF": {
+    "recommended_settings": null,
+    "recommended_settings_source": null,
+    "recommended_settings_notes": [],
+    "checked": "2026-04-21T11:44:48.069274+00:00"
+  },
+  "mradermacher/SOLAR-10.7B-Instruct-v1.0-GGUF": {
+    "recommended_settings": null,
+    "recommended_settings_source": null,
+    "recommended_settings_notes": [],
+    "checked": "2026-04-21T11:44:48.547940+00:00"
+  },
+  "unsloth/gemma-3-12b-it-GGUF": {
+    "recommended_settings": {
+      "temperature": 0.1,
+      "top_p": 0.95,
+      "top_k": 64,
+      "min_p": 0.01
+    },
+    "recommended_settings_source": "params",
+    "recommended_settings_notes": [],
+    "checked": "2026-04-21T11:44:48.950711+00:00"
+  },
+  "unsloth/Mistral-Nemo-Instruct-2407-GGUF": {
+    "recommended_settings": null,
+    "recommended_settings_source": null,
+    "recommended_settings_notes": [],
+    "checked": "2026-04-21T11:44:49.421940+00:00"
+  },
+  "bartowski/Mistral-Nemo-Instruct-2407-GGUF": {
+    "recommended_settings": null,
+    "recommended_settings_source": null,
+    "recommended_settings_notes": [],
+    "checked": "2026-04-21T11:44:49.858061+00:00"
+  },
+  "mradermacher/Mistral-Nemo-Instruct-2407-GGUF": {
+    "recommended_settings": null,
+    "recommended_settings_source": null,
+    "recommended_settings_notes": [],
+    "checked": "2026-04-21T11:44:50.337115+00:00"
+  },
+  "TheBloke/Orca-2-13b-GGUF": {
+    "recommended_settings": {
+      "temperature": 0.0
+    },
+    "recommended_settings_source": "readme",
+    "recommended_settings_notes": [],
+    "checked": "2026-04-21T11:44:51.111792+00:00"
+  },
+  "TheBloke/vicuna-13b-v1.5-GGUF": {
+    "recommended_settings": null,
+    "recommended_settings_source": null,
+    "recommended_settings_notes": [],
+    "checked": "2026-04-21T11:44:51.957773+00:00"
+  },
+  "mradermacher/vicuna-13b-v1.5-GGUF": {
+    "recommended_settings": null,
+    "recommended_settings_source": null,
+    "recommended_settings_notes": [],
+    "checked": "2026-04-21T11:44:52.768704+00:00"
+  },
+  "TheBloke/WizardLM-13B-V1.2-GGUF": {
+    "recommended_settings": null,
+    "recommended_settings_source": null,
+    "recommended_settings_notes": [],
+    "checked": "2026-04-21T11:44:53.260530+00:00"
+  },
+  "mradermacher/WizardLM-13B-V1.2-GGUF": {
+    "recommended_settings": null,
+    "recommended_settings_source": null,
+    "recommended_settings_notes": [],
+    "checked": "2026-04-21T11:44:53.737082+00:00"
+  },
+  "mradermacher/CodeLlama-13b-Instruct-hf-GGUF": {
+    "recommended_settings": null,
+    "recommended_settings_source": null,
+    "recommended_settings_notes": [],
+    "checked": "2026-04-21T11:44:54.161499+00:00"
+  },
+  "unsloth/phi-4-GGUF": {
+    "recommended_settings": null,
+    "recommended_settings_source": null,
+    "recommended_settings_notes": [],
+    "checked": "2026-04-21T11:44:54.570650+00:00"
+  },
+  "bartowski/phi-4-GGUF": {
+    "recommended_settings": {
+      "temperature": 0.0
+    },
+    "recommended_settings_source": "readme",
+    "recommended_settings_notes": [],
+    "checked": "2026-04-21T11:44:55.051254+00:00"
+  },
+  "unsloth/Phi-4-reasoning-GGUF": {
+    "recommended_settings": {
+      "temperature": 0.8,
+      "top_p": 0.95,
+      "min_p": 0.0
+    },
+    "recommended_settings_source": "params",
+    "recommended_settings_notes": [],
+    "checked": "2026-04-21T11:44:55.579745+00:00"
+  },
+  "bartowski/Qwen2.5-14B-Instruct-GGUF": {
+    "recommended_settings": null,
+    "recommended_settings_source": null,
+    "recommended_settings_notes": [],
+    "checked": "2026-04-21T11:44:56.012327+00:00"
+  },
+  "mradermacher/Qwen2.5-14B-Instruct-GGUF": {
+    "recommended_settings": null,
+    "recommended_settings_source": null,
+    "recommended_settings_notes": [],
+    "checked": "2026-04-21T11:44:56.550558+00:00"
+  },
+  "unsloth/Qwen3-14B-GGUF": {
+    "recommended_settings": {
+      "temperature": 0.6,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0
+    },
+    "recommended_settings_source": "params",
+    "recommended_settings_notes": [],
+    "checked": "2026-04-21T11:44:57.027791+00:00"
+  },
+  "unsloth/Qwen2.5-Coder-14B-Instruct-GGUF": {
+    "recommended_settings": null,
+    "recommended_settings_source": null,
+    "recommended_settings_notes": [],
+    "checked": "2026-04-21T11:44:57.585695+00:00"
+  },
+  "bartowski/Qwen2.5-Coder-14B-Instruct-GGUF": {
+    "recommended_settings": null,
+    "recommended_settings_source": null,
+    "recommended_settings_notes": [],
+    "checked": "2026-04-21T11:44:58.299735+00:00"
+  },
+  "mradermacher/Qwen2.5-Coder-14B-Instruct-GGUF": {
+    "recommended_settings": null,
+    "recommended_settings_source": null,
+    "recommended_settings_notes": [],
+    "checked": "2026-04-21T11:44:59.016897+00:00"
+  },
+  "mradermacher/WizardCoder-15B-V1.0-GGUF": {
+    "recommended_settings": null,
+    "recommended_settings_source": null,
+    "recommended_settings_notes": [],
+    "checked": "2026-04-21T11:44:59.733767+00:00"
+  },
+  "mradermacher/starcoder2-15b-GGUF": {
+    "recommended_settings": null,
+    "recommended_settings_source": null,
+    "recommended_settings_notes": [],
+    "checked": "2026-04-21T11:45:00.425355+00:00"
+  },
+  "bartowski/DeepSeek-Coder-V2-Lite-Instruct-GGUF": {
+    "recommended_settings": null,
+    "recommended_settings_source": null,
+    "recommended_settings_notes": [],
+    "checked": "2026-04-21T11:45:01.126447+00:00"
+  },
+  "mradermacher/DeepSeek-Coder-V2-Lite-Instruct-GGUF": {
+    "recommended_settings": null,
+    "recommended_settings_source": null,
+    "recommended_settings_notes": [],
+    "checked": "2026-04-21T11:45:01.779541+00:00"
+  },
+  "mradermacher/Ling-lite-GGUF": {
+    "recommended_settings": null,
+    "recommended_settings_source": null,
+    "recommended_settings_notes": [],
+    "checked": "2026-04-21T11:45:02.529451+00:00"
+  },
+  "mradermacher/LFM2-24B-A2B-GGUF": {
+    "recommended_settings": null,
+    "recommended_settings_source": null,
+    "recommended_settings_notes": [],
+    "checked": "2026-04-21T11:45:02.995168+00:00"
+  },
+  "unsloth/Mistral-Small-24B-Instruct-2501-GGUF": {
+    "recommended_settings": {
+      "temperature": 0.15
+    },
+    "recommended_settings_source": "readme",
+    "recommended_settings_notes": [],
+    "checked": "2026-04-21T11:45:03.604012+00:00"
+  },
+  "unsloth/gemma-4-26B-A4B-it-GGUF": {
+    "recommended_settings": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 64
+    },
+    "recommended_settings_source": "readme",
+    "recommended_settings_notes": [],
+    "checked": "2026-04-21T11:45:04.305646+00:00"
+  },
+  "bartowski/gemma-2-27b-it-GGUF": {
+    "recommended_settings": null,
+    "recommended_settings_source": null,
+    "recommended_settings_notes": [],
+    "checked": "2026-04-21T11:45:05.028129+00:00"
+  },
+  "mradermacher/gemma-2-27b-it-GGUF": {
+    "recommended_settings": null,
+    "recommended_settings_source": null,
+    "recommended_settings_notes": [],
+    "checked": "2026-04-21T11:45:05.729151+00:00"
+  },
+  "unsloth/gemma-3-27b-it-GGUF": {
+    "recommended_settings": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 64,
+      "min_p": 0.01
+    },
+    "recommended_settings_source": "params",
+    "recommended_settings_notes": [],
+    "checked": "2026-04-21T11:45:06.436553+00:00"
+  },
+  "unsloth/Qwen3.5-27B-GGUF": {
+    "recommended_settings": null,
+    "recommended_settings_source": null,
+    "recommended_settings_notes": [],
+    "checked": "2026-04-21T11:45:07.179822+00:00"
+  },
+  "mradermacher/Qwen3.5-27B-GGUF": {
+    "recommended_settings": null,
+    "recommended_settings_source": null,
+    "recommended_settings_notes": [],
+    "checked": "2026-04-21T11:45:07.752525+00:00"
+  },
+  "mradermacher/NVIDIA-Nemotron-3-Nano-30B-A3B-BF16-GGUF": {
+    "recommended_settings": null,
+    "recommended_settings_source": null,
+    "recommended_settings_notes": [],
+    "checked": "2026-04-21T11:45:08.317560+00:00"
+  },
+  "mradermacher/EXAONE-4.0-32B-GGUF": {
+    "recommended_settings": null,
+    "recommended_settings_source": null,
+    "recommended_settings_notes": [],
+    "checked": "2026-04-21T11:45:08.946990+00:00"
+  },
+  "unsloth/OLMo-2-0325-32B-Instruct-GGUF": {
+    "recommended_settings": null,
+    "recommended_settings_source": null,
+    "recommended_settings_notes": [],
+    "checked": "2026-04-21T11:45:10.177353+00:00"
   }
 }

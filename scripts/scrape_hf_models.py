@@ -21,6 +21,10 @@ import urllib.request
 import urllib.error
 
 HF_API = "https://huggingface.co/api/models"
+HF_MAX_RETRIES = 5
+HF_BACKOFF_INITIAL_SECONDS = 1.0
+HF_BACKOFF_MULTIPLIER = 2.0
+HF_BACKOFF_MAX_SECONDS = 16.0
 
 # Global auth token, set from --token flag or HF_TOKEN / HUGGING_FACE_HUB_TOKEN env var
 _hf_token: str | None = None
@@ -32,6 +36,72 @@ def _auth_headers() -> dict[str, str]:
     if _hf_token:
         headers["Authorization"] = f"Bearer {_hf_token}"
     return headers
+
+
+def _parse_retry_after(value: str | None) -> float | None:
+    """Parse Retry-After seconds when the API provides it."""
+    if not value:
+        return None
+    try:
+        return max(float(value), 0.0)
+    except ValueError:
+        return None
+
+
+def _retry_delay(attempt: int, retry_after: str | None) -> float:
+    """Return the sleep duration for a retry attempt."""
+    header_delay = _parse_retry_after(retry_after)
+    if header_delay is not None:
+        return min(header_delay, HF_BACKOFF_MAX_SECONDS)
+    return min(
+        HF_BACKOFF_INITIAL_SECONDS * (HF_BACKOFF_MULTIPLIER ** attempt),
+        HF_BACKOFF_MAX_SECONDS,
+    )
+
+
+def _hf_request_bytes(
+    url: str,
+    *,
+    timeout: int,
+    context: str,
+    suppress_http_codes: set[int] | None = None,
+) -> bytes | None:
+    """Fetch bytes from Hugging Face with bounded exponential backoff."""
+    suppress_http_codes = suppress_http_codes or set()
+
+    for attempt in range(HF_MAX_RETRIES + 1):
+        req = urllib.request.Request(url, headers=_auth_headers())
+        try:
+            with urllib.request.urlopen(req, timeout=timeout) as resp:
+                return resp.read()
+        except urllib.error.HTTPError as e:
+            if e.code in suppress_http_codes:
+                return None
+
+            should_retry = e.code == 429 or 500 <= e.code < 600
+            if should_retry and attempt < HF_MAX_RETRIES:
+                delay = _retry_delay(attempt, e.headers.get("Retry-After"))
+                print(
+                    f"  ⚠ HTTP {e.code} for {context} — retrying in {delay:.1f}s "
+                    f"({attempt + 1}/{HF_MAX_RETRIES})",
+                    file=sys.stderr,
+                )
+                time.sleep(delay)
+                continue
+            raise
+        except (urllib.error.URLError, TimeoutError, OSError) as e:
+            if attempt < HF_MAX_RETRIES:
+                delay = _retry_delay(attempt, None)
+                print(
+                    f"  ⚠ Network error for {context}: {e} — retrying in {delay:.1f}s "
+                    f"({attempt + 1}/{HF_MAX_RETRIES})",
+                    file=sys.stderr,
+                )
+                time.sleep(delay)
+                continue
+            raise
+
+    return None
 
 
 RECOMMENDED_SETTINGS_KEYS = ("temperature", "top_p", "top_k", "min_p")
@@ -331,10 +401,9 @@ MOE_ACTIVE_PARAMS = {
 def fetch_model_info(repo_id: str) -> dict | None:
     """Fetch model info from HuggingFace API."""
     url = f"{HF_API}/{repo_id}"
-    req = urllib.request.Request(url, headers=_auth_headers())
     try:
-        with urllib.request.urlopen(req, timeout=30) as resp:
-            return json.loads(resp.read().decode())
+        payload = _hf_request_bytes(url, timeout=30, context=repo_id)
+        return json.loads(payload.decode()) if payload is not None else None
     except urllib.error.HTTPError as e:
         if e.code == 401 and not _hf_token:
             print(f"  ⚠ HTTP 401 for {repo_id} — model is gated, set HF_TOKEN to access",
@@ -350,16 +419,19 @@ def fetch_model_info(repo_id: str) -> dict | None:
 def fetch_repo_file(repo_id: str, file_path: str) -> str | None:
     """Fetch a raw file from a HuggingFace repo."""
     url = f"https://huggingface.co/{repo_id}/resolve/main/{file_path}"
-    req = urllib.request.Request(url, headers=_auth_headers())
     try:
-        with urllib.request.urlopen(req, timeout=20) as resp:
-            return resp.read().decode()
+        payload = _hf_request_bytes(
+            url,
+            timeout=20,
+            context=f"{repo_id}/{file_path}",
+            suppress_http_codes={404},
+        )
+        return payload.decode() if payload is not None else None
     except urllib.error.HTTPError as e:
-        if e.code != 404:
-            print(
-                f"  ⚠ HTTP {e.code} fetching {file_path} from {repo_id}",
-                file=sys.stderr,
-            )
+        print(
+            f"  ⚠ HTTP {e.code} fetching {file_path} from {repo_id}",
+            file=sys.stderr,
+        )
         return None
     except Exception as e:
         print(f"  ⚠ Error fetching {file_path} from {repo_id}: {e}", file=sys.stderr)
@@ -531,10 +603,14 @@ def infer_context_length(config: dict | None) -> int:
 def fetch_config_json(repo_id: str) -> dict | None:
     """Fetch the full config.json from a HF repo (has max_position_embeddings)."""
     url = f"https://huggingface.co/{repo_id}/resolve/main/config.json"
-    req = urllib.request.Request(url, headers=_auth_headers())
     try:
-        with urllib.request.urlopen(req, timeout=15) as resp:
-            return json.loads(resp.read().decode())
+        payload = _hf_request_bytes(
+            url,
+            timeout=15,
+            context=f"{repo_id}/config.json",
+            suppress_http_codes={404},
+        )
+        return json.loads(payload.decode()) if payload is not None else None
     except Exception:
         return None
 
@@ -1064,12 +1140,18 @@ def _model_gguf_repo_candidates(repo_id: str) -> list[tuple[str, str]]:
 def check_gguf_repo_exists(repo_id: str) -> bool:
     """Check if a HuggingFace repo exists and has GGUF files."""
     url = f"{HF_API}/{repo_id}"
-    req = urllib.request.Request(url, headers=_auth_headers())
     try:
-        with urllib.request.urlopen(req, timeout=10) as resp:
-            info = json.loads(resp.read().decode())
-            tags = info.get("tags", [])
-            return "gguf" in tags
+        payload = _hf_request_bytes(
+            url,
+            timeout=10,
+            context=repo_id,
+            suppress_http_codes={401, 404},
+        )
+        if payload is None:
+            return False
+        info = json.loads(payload.decode())
+        tags = info.get("tags", [])
+        return "gguf" in tags
     except Exception:
         return False
 
@@ -1170,10 +1252,13 @@ def discover_trending_models(limit: int = 30, min_downloads: int = 10000) -> lis
             f"expand[]=safetensors&"
             f"expand[]=config"
         )
-        req = urllib.request.Request(url, headers=_auth_headers())
         try:
-            with urllib.request.urlopen(req, timeout=60) as resp:
-                models = json.loads(resp.read().decode())
+            payload = _hf_request_bytes(
+                url,
+                timeout=60,
+                context=f"trending {pipeline} models",
+            )
+            models = json.loads(payload.decode()) if payload is not None else []
         except Exception as e:
             print(f"  ⚠ Failed to fetch trending {pipeline} models: {e}",
                   file=sys.stderr)
