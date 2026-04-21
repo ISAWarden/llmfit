@@ -1225,5 +1225,18 @@
       "multiple README presets found; kept first values for temperature, top_p"
     ],
     "checked": "2026-04-21T12:21:40.346681+00:00"
+  },
+  "unsloth/Qwen3.6-35B-A3B-GGUF": {
+    "recommended_settings": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0
+    },
+    "recommended_settings_source": "readme",
+    "recommended_settings_notes": [
+      "multiple README presets found; kept first values for temperature, top_k, top_p"
+    ],
+    "checked": "2026-04-21T12:26:50.207243+00:00"
   }
 }

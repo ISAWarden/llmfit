@@ -4031,6 +4031,56 @@
     ]
   },
   {
+    "name": "Qwen/Qwen3.6-35B-A3B",
+    "provider": "Alibaba",
+    "parameter_count": "36.0B",
+    "parameters_raw": 35951822704,
+    "min_ram_gb": 20.1,
+    "recommended_ram_gb": 33.5,
+    "min_vram_gb": 18.4,
+    "quantization": "Q4_K_M",
+    "format": "gguf",
+    "context_length": 262144,
+    "use_case": "General purpose",
+    "capabilities": [
+      "vision",
+      "tool_use"
+    ],
+    "pipeline_tag": "image-text-to-text",
+    "architecture": "qwen3_5_moe",
+    "hf_downloads": 458436,
+    "hf_likes": 1097,
+    "release_date": "2026-04-15",
+    "num_hidden_layers": null,
+    "num_attention_heads": null,
+    "num_key_value_heads": null,
+    "head_dim": null,
+    "is_moe": true,
+    "num_experts": 256,
+    "active_experts": 8,
+    "active_parameters": 3000000000,
+    "gguf_sources": [
+      {
+        "repo": "unsloth/Qwen3.6-35B-A3B-GGUF",
+        "provider": "unsloth"
+      },
+      {
+        "repo": "ggml-org/Qwen3.6-35B-A3B-GGUF",
+        "provider": "ggml-org"
+      }
+    ],
+    "recommended_settings": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0
+    },
+    "recommended_settings_source": "readme",
+    "recommended_settings_notes": [
+      "multiple README presets found; kept first values for temperature, top_k, top_p"
+    ]
+  },
+  {
     "name": "tiiuae/falcon-40b-instruct",
     "provider": "TII",
     "parameter_count": "40.0B",
