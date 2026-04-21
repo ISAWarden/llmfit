@@ -13,12 +13,18 @@ Usage:
 import argparse
 import json
 import os
+import re
+import math
 import sys
 import time
 import urllib.request
 import urllib.error
 
 HF_API = "https://huggingface.co/api/models"
+HF_MAX_RETRIES = 5
+HF_BACKOFF_INITIAL_SECONDS = 1.0
+HF_BACKOFF_MULTIPLIER = 2.0
+HF_BACKOFF_MAX_SECONDS = 16.0
 
 # Global auth token, set from --token flag or HF_TOKEN / HUGGING_FACE_HUB_TOKEN env var
 _hf_token: str | None = None
@@ -30,6 +36,83 @@ def _auth_headers() -> dict[str, str]:
     if _hf_token:
         headers["Authorization"] = f"Bearer {_hf_token}"
     return headers
+
+
+def _parse_retry_after(value: str | None) -> float | None:
+    """Parse Retry-After seconds when the API provides it."""
+    if not value:
+        return None
+    try:
+        return max(float(value), 0.0)
+    except ValueError:
+        return None
+
+
+def _retry_delay(attempt: int, retry_after: str | None) -> float:
+    """Return the sleep duration for a retry attempt."""
+    header_delay = _parse_retry_after(retry_after)
+    if header_delay is not None:
+        return min(header_delay, HF_BACKOFF_MAX_SECONDS)
+    return min(
+        HF_BACKOFF_INITIAL_SECONDS * (HF_BACKOFF_MULTIPLIER ** attempt),
+        HF_BACKOFF_MAX_SECONDS,
+    )
+
+
+def _hf_request_bytes(
+    url: str,
+    *,
+    timeout: int,
+    context: str,
+    suppress_http_codes: set[int] | None = None,
+) -> bytes | None:
+    """Fetch bytes from Hugging Face with bounded exponential backoff."""
+    suppress_http_codes = suppress_http_codes or set()
+
+    for attempt in range(HF_MAX_RETRIES + 1):
+        req = urllib.request.Request(url, headers=_auth_headers())
+        try:
+            with urllib.request.urlopen(req, timeout=timeout) as resp:
+                return resp.read()
+        except urllib.error.HTTPError as e:
+            if e.code in suppress_http_codes:
+                return None
+
+            should_retry = e.code == 429 or 500 <= e.code < 600
+            if should_retry and attempt < HF_MAX_RETRIES:
+                delay = _retry_delay(attempt, e.headers.get("Retry-After"))
+                print(
+                    f"  ⚠ HTTP {e.code} for {context} — retrying in {delay:.1f}s "
+                    f"({attempt + 1}/{HF_MAX_RETRIES})",
+                    file=sys.stderr,
+                )
+                time.sleep(delay)
+                continue
+            raise
+        except (urllib.error.URLError, TimeoutError, OSError) as e:
+            if attempt < HF_MAX_RETRIES:
+                delay = _retry_delay(attempt, None)
+                print(
+                    f"  ⚠ Network error for {context}: {e} — retrying in {delay:.1f}s "
+                    f"({attempt + 1}/{HF_MAX_RETRIES})",
+                    file=sys.stderr,
+                )
+                time.sleep(delay)
+                continue
+            raise
+
+    return None
+
+
+RECOMMENDED_SETTINGS_KEYS = ("temperature", "top_p", "top_k", "min_p")
+RECOMMENDED_SETTINGS_CACHE_FILE = os.path.join(
+    os.path.dirname(__file__), "..", "data", "gguf_recommended_settings_cache.json"
+)
+RECOMMENDED_SETTINGS_CACHE_MAX_AGE_DAYS = 30
+RECOMMENDED_SETTINGS_PATTERN = re.compile(
+    r'(?P<key>temperature|top_p|top_k|min_p)\s*[:=]\s*(?P<value>-?\d+(?:\.\d+)?)',
+    re.IGNORECASE,
+)
 
 # Top text-generation models to scrape (owner/repo)
 TARGET_MODELS = [
@@ -315,10 +398,9 @@ MOE_ACTIVE_PARAMS = {
 def fetch_model_info(repo_id: str) -> dict | None:
     """Fetch model info from HuggingFace API."""
     url = f"{HF_API}/{repo_id}"
-    req = urllib.request.Request(url, headers=_auth_headers())
     try:
-        with urllib.request.urlopen(req, timeout=30) as resp:
-            return json.loads(resp.read().decode())
+        payload = _hf_request_bytes(url, timeout=30, context=repo_id)
+        return json.loads(payload.decode()) if payload is not None else None
     except urllib.error.HTTPError as e:
         if e.code == 401 and not _hf_token:
             print(f"  ⚠ HTTP 401 for {repo_id} — model is gated, set HF_TOKEN to access",
@@ -328,6 +410,28 @@ def fetch_model_info(repo_id: str) -> dict | None:
         return None
     except Exception as e:
         print(f"  ⚠ Error fetching {repo_id}: {e}", file=sys.stderr)
+        return None
+
+
+def fetch_repo_file(repo_id: str, file_path: str) -> str | None:
+    """Fetch a raw file from a HuggingFace repo."""
+    url = f"https://huggingface.co/{repo_id}/resolve/main/{file_path}"
+    try:
+        payload = _hf_request_bytes(
+            url,
+            timeout=20,
+            context=f"{repo_id}/{file_path}",
+            suppress_http_codes={404},
+        )
+        return payload.decode() if payload is not None else None
+    except urllib.error.HTTPError as e:
+        print(
+            f"  ⚠ HTTP {e.code} fetching {file_path} from {repo_id}",
+            file=sys.stderr,
+        )
+        return None
+    except Exception as e:
+        print(f"  ⚠ Error fetching {file_path} from {repo_id}: {e}", file=sys.stderr)
         return None
 
 
@@ -496,12 +600,265 @@ def infer_context_length(config: dict | None) -> int:
 def fetch_config_json(repo_id: str) -> dict | None:
     """Fetch the full config.json from a HF repo (has max_position_embeddings)."""
     url = f"https://huggingface.co/{repo_id}/resolve/main/config.json"
-    req = urllib.request.Request(url, headers=_auth_headers())
     try:
-        with urllib.request.urlopen(req, timeout=15) as resp:
-            return json.loads(resp.read().decode())
+        payload = _hf_request_bytes(
+            url,
+            timeout=15,
+            context=f"{repo_id}/config.json",
+            suppress_http_codes={404},
+        )
+        return json.loads(payload.decode()) if payload is not None else None
     except Exception:
         return None
+
+
+def _load_recommended_settings_cache() -> dict:
+    """Load the GGUF recommended-settings cache from disk."""
+    try:
+        with open(RECOMMENDED_SETTINGS_CACHE_FILE) as f:
+            return json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
+        return {}
+
+
+def _save_recommended_settings_cache(cache: dict):
+    """Persist the GGUF recommended-settings cache."""
+    os.makedirs(os.path.dirname(RECOMMENDED_SETTINGS_CACHE_FILE), exist_ok=True)
+    with open(RECOMMENDED_SETTINGS_CACHE_FILE, "w") as f:
+        json.dump(cache, f, indent=2)
+
+
+def _recommended_settings_cache_fresh(entry: dict) -> bool:
+    """Return True if a cached settings lookup is still fresh."""
+    try:
+        from datetime import datetime, timedelta, timezone
+
+        checked = datetime.fromisoformat(entry["checked"])
+        return (datetime.now(timezone.utc) - checked) < timedelta(
+            days=RECOMMENDED_SETTINGS_CACHE_MAX_AGE_DAYS
+        )
+    except (KeyError, ValueError):
+        return False
+
+
+def _coerce_numeric(value: object) -> float | int | None:
+    """Convert a raw value into a numeric scalar if possible."""
+    if isinstance(value, bool):
+        return None
+    if isinstance(value, int):
+        return value
+    if isinstance(value, float):
+        if not math.isfinite(value):
+            return None
+        return value
+    if isinstance(value, str):
+        text = value.strip().strip('"').strip("'")
+        if not text:
+            return None
+        try:
+            if re.fullmatch(r"-?\d+", text):
+                return int(text)
+            return float(text)
+        except ValueError:
+            return None
+    return None
+
+
+def _normalize_recommended_settings(raw: dict) -> tuple[dict[str, float | int], list[str]]:
+    """Normalize a raw settings object into the supported subset."""
+    normalized: dict[str, float | int] = {}
+    notes: list[str] = []
+
+    for key in RECOMMENDED_SETTINGS_KEYS:
+        if key not in raw:
+            continue
+
+        numeric_value = _coerce_numeric(raw[key])
+        if numeric_value is None:
+            return {}, [f"rejected malformed {key} value"]
+
+        if key == "temperature":
+            if not 0.0 <= float(numeric_value) <= 2.0:
+                return {}, [f"rejected out-of-range temperature value {numeric_value}"]
+            normalized[key] = float(numeric_value)
+        elif key == "top_p":
+            if not 0.0 <= float(numeric_value) <= 1.0:
+                return {}, [f"rejected out-of-range top_p value {numeric_value}"]
+            normalized[key] = float(numeric_value)
+        elif key == "top_k":
+            if float(numeric_value) < 0:
+                return {}, [f"rejected negative top_k value {numeric_value}"]
+            normalized[key] = int(numeric_value)
+        elif key == "min_p":
+            if not 0.0 <= float(numeric_value) <= 1.0:
+                return {}, [f"rejected out-of-range min_p value {numeric_value}"]
+            normalized[key] = float(numeric_value)
+
+    if not normalized:
+        return {}, notes
+
+    return normalized, notes
+
+
+def _parse_recommended_settings_text(text: str) -> tuple[dict[str, float | int] | None, list[str]]:
+    """Parse explicit generation settings from a text blob.
+
+    This intentionally accepts only unambiguous numeric key/value pairs. If a
+    key appears with multiple different values, the block is treated as
+    ambiguous and rejected.
+    """
+    matches = list(RECOMMENDED_SETTINGS_PATTERN.finditer(text))
+    if not matches:
+        return None, []
+
+    values_by_key: dict[str, set[float | int]] = {}
+    for match in matches:
+        key = match.group("key").lower()
+        numeric_value = _coerce_numeric(match.group("value"))
+        if numeric_value is None:
+            return None, [f"rejected malformed {key} value"]
+        if key == "top_k":
+            numeric_value = int(numeric_value)
+        else:
+            numeric_value = float(numeric_value)
+        values_by_key.setdefault(key, set()).add(numeric_value)
+
+    conflicts = {
+        key: sorted(values, key=float)
+        for key, values in values_by_key.items()
+        if len(values) > 1
+    }
+    if conflicts:
+        return None, [
+            "ambiguous README settings with conflicting values for "
+            + ", ".join(sorted(conflicts.keys()))
+        ]
+
+    normalized: dict[str, float | int] = {}
+    for key, values in values_by_key.items():
+        value = next(iter(values))
+        if key == "top_k":
+            normalized[key] = int(value)
+        else:
+            normalized[key] = float(value)
+
+    normalized, notes = _normalize_recommended_settings(normalized)
+    if not normalized:
+        return None, notes
+
+    return normalized, notes
+
+
+def _parse_recommended_settings_json(text: str) -> tuple[dict[str, float | int] | None, list[str]]:
+    """Parse a JSON object that contains explicit generation settings."""
+    try:
+        parsed = json.loads(text)
+    except json.JSONDecodeError:
+        return None, []
+
+    if not isinstance(parsed, dict):
+        return None, []
+
+    normalized, notes = _normalize_recommended_settings(parsed)
+    if not normalized:
+        return None, notes
+    return normalized, notes
+
+
+def _parse_recommended_settings_file(text: str, file_name: str) -> tuple[dict[str, float | int] | None, list[str]]:
+    """Parse a structured or lightly formatted settings file."""
+    parsed, notes = _parse_recommended_settings_json(text)
+    if parsed:
+        return parsed, notes
+    if file_name.endswith(".json"):
+        return None, notes
+
+    parsed, notes = _parse_recommended_settings_text(text)
+    if parsed:
+        return parsed, notes
+    return None, notes
+
+
+def _extract_recommended_settings_from_repo(repo_id: str) -> tuple[dict[str, float | int] | None, str | None, list[str]]:
+    """Resolve the first safe recommended-settings payload for a repo."""
+    info = fetch_model_info(repo_id)
+    if not info:
+        return None, None, [f"failed to fetch repo metadata for {repo_id}"]
+
+    siblings = {
+        sibling.get("rfilename")
+        for sibling in info.get("siblings", [])
+        if isinstance(sibling, dict) and sibling.get("rfilename")
+    }
+
+    candidate_files = [
+        ("generation_config.json", "generation_config"),
+        ("params", "params"),
+        ("README.md", "readme"),
+        ("README", "readme"),
+    ]
+    for file_name, source in candidate_files:
+        if file_name not in siblings:
+            continue
+        text = fetch_repo_file(repo_id, file_name)
+        if not text:
+            continue
+        parsed, notes = _parse_recommended_settings_file(text, file_name)
+        if parsed:
+            return parsed, source, notes
+
+    return None, None, []
+
+
+def enrich_recommended_settings(models: list[dict]) -> int:
+    """Add explicit recommended generation settings to GGUF-backed models."""
+    cache = _load_recommended_settings_cache()
+    enriched = 0
+    total = len(models)
+    from datetime import datetime, timezone
+
+    for i, model in enumerate(models, 1):
+        repo_sources = model.get("gguf_sources", [])
+        if not repo_sources:
+            continue
+
+        resolved_settings = None
+        resolved_source = None
+        resolved_notes: list[str] = []
+
+        for source in repo_sources:
+            source_repo = source.get("repo")
+            if not source_repo:
+                continue
+
+            if source_repo in cache and _recommended_settings_cache_fresh(cache[source_repo]):
+                entry = cache[source_repo]
+                resolved_settings = entry.get("recommended_settings")
+                resolved_source = entry.get("recommended_settings_source")
+                resolved_notes = entry.get("recommended_settings_notes", [])
+            else:
+                print(f"  [{i}/{total}] Checking recommended settings for {source_repo}...")
+                resolved_settings, resolved_source, resolved_notes = _extract_recommended_settings_from_repo(
+                    source_repo
+                )
+                cache[source_repo] = {
+                    "recommended_settings": resolved_settings,
+                    "recommended_settings_source": resolved_source,
+                    "recommended_settings_notes": resolved_notes,
+                    "checked": datetime.now(timezone.utc).isoformat(),
+                }
+
+            if resolved_settings:
+                break
+
+        model["recommended_settings"] = resolved_settings
+        model["recommended_settings_source"] = resolved_source
+        model["recommended_settings_notes"] = resolved_notes
+        if resolved_settings:
+            enriched += 1
+
+    _save_recommended_settings_cache(cache)
+    return enriched
 
 
 def extract_provider(repo_id: str) -> str:
@@ -780,12 +1137,18 @@ def _model_gguf_repo_candidates(repo_id: str) -> list[tuple[str, str]]:
 def check_gguf_repo_exists(repo_id: str) -> bool:
     """Check if a HuggingFace repo exists and has GGUF files."""
     url = f"{HF_API}/{repo_id}"
-    req = urllib.request.Request(url, headers=_auth_headers())
     try:
-        with urllib.request.urlopen(req, timeout=10) as resp:
-            info = json.loads(resp.read().decode())
-            tags = info.get("tags", [])
-            return "gguf" in tags
+        payload = _hf_request_bytes(
+            url,
+            timeout=10,
+            context=repo_id,
+            suppress_http_codes={401, 404},
+        )
+        if payload is None:
+            return False
+        info = json.loads(payload.decode())
+        tags = info.get("tags", [])
+        return "gguf" in tags
     except Exception:
         return False
 
@@ -886,10 +1249,13 @@ def discover_trending_models(limit: int = 30, min_downloads: int = 10000) -> lis
             f"expand[]=safetensors&"
             f"expand[]=config"
         )
-        req = urllib.request.Request(url, headers=_auth_headers())
         try:
-            with urllib.request.urlopen(req, timeout=60) as resp:
-                models = json.loads(resp.read().decode())
+            payload = _hf_request_bytes(
+                url,
+                timeout=60,
+                context=f"trending {pipeline} models",
+            )
+            models = json.loads(payload.decode()) if payload is not None else []
         except Exception as e:
             print(f"  ⚠ Failed to fetch trending {pipeline} models: {e}",
                   file=sys.stderr)
@@ -2095,6 +2461,14 @@ def main():
         print(f"\nEnriching {len(results)} models with GGUF download sources...")
         gguf_enriched = enrich_gguf_sources(results)
         print(f"  Found GGUF sources for {gguf_enriched} models")
+
+    recommended_enriched = enrich_recommended_settings(results)
+    print(f"  Found explicit recommended settings for {recommended_enriched} models")
+
+    for model in results:
+        model.setdefault("recommended_settings", None)
+        model.setdefault("recommended_settings_source", None)
+        model.setdefault("recommended_settings_notes", [])
 
     # Write to both locations: repo root (for reference) and llmfit-core (compiled into binary)
     output_paths = ["data/hf_models.json", "llmfit-core/data/hf_models.json"]

@@ -1336,6 +1336,9 @@ mod tests {
             head_dim: None,
             attention_layout: None,
             license: None,
+            recommended_settings: None,
+            recommended_settings_source: None,
+            recommended_settings_notes: vec![],
         }
     }
 
@@ -1520,6 +1523,9 @@ mod tests {
             head_dim: None,
             attention_layout: None,
             license: None,
+            recommended_settings: None,
+            recommended_settings_source: None,
+            recommended_settings_notes: vec![],
         };
         let mut system = test_system(64.0, true, Some(8.0));
         system.backend = GpuBackend::Cuda;
@@ -1559,6 +1565,9 @@ mod tests {
             head_dim: None,
             attention_layout: None,
             license: None,
+            recommended_settings: None,
+            recommended_settings_source: None,
+            recommended_settings_notes: vec![],
         };
         let system = test_system(12.0, true, Some(8.0));
 
@@ -2258,6 +2267,9 @@ mod tests {
             head_dim: None,
             attention_layout: None,
             license: None,
+            recommended_settings: None,
+            recommended_settings_source: None,
+            recommended_settings_notes: vec![],
         }
     }
 
