@@ -3709,6 +3709,10 @@
       {
         "repo": "unsloth/OLMo-2-0325-32B-Instruct-GGUF",
         "provider": "unsloth"
+      },
+      {
+        "repo": "mradermacher/OLMo-2-0325-32B-Instruct-GGUF",
+        "provider": "mradermacher"
       }
     ],
     "recommended_settings": null,
@@ -3731,6 +3735,16 @@
     "hf_downloads": 0,
     "hf_likes": 0,
     "release_date": null,
+    "gguf_sources": [
+      {
+        "repo": "bartowski/Qwen2.5-32B-Instruct-GGUF",
+        "provider": "bartowski"
+      },
+      {
+        "repo": "mradermacher/Qwen2.5-32B-Instruct-GGUF",
+        "provider": "mradermacher"
+      }
+    ],
     "recommended_settings": null,
     "recommended_settings_source": null,
     "recommended_settings_notes": []
@@ -3760,8 +3774,26 @@
     "num_attention_heads": null,
     "num_key_value_heads": null,
     "head_dim": null,
-    "recommended_settings": null,
-    "recommended_settings_source": null,
+    "gguf_sources": [
+      {
+        "repo": "unsloth/gemma-4-31B-it-GGUF",
+        "provider": "unsloth"
+      },
+      {
+        "repo": "ggml-org/gemma-4-31B-it-GGUF",
+        "provider": "ggml-org"
+      },
+      {
+        "repo": "mradermacher/gemma-4-31B-it-GGUF",
+        "provider": "mradermacher"
+      }
+    ],
+    "recommended_settings": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 64
+    },
+    "recommended_settings_source": "readme",
     "recommended_settings_notes": []
   },
   {
@@ -3782,12 +3814,26 @@
     "pipeline_tag": "text-generation",
     "architecture": "qwen2",
     "hf_downloads": 1257495,
-    "hf_likes": 2008,
+    "hf_likes": 2009,
     "release_date": "2024-11-06",
     "num_hidden_layers": 64,
     "num_attention_heads": 40,
     "num_key_value_heads": 8,
     "head_dim": 128,
+    "gguf_sources": [
+      {
+        "repo": "unsloth/Qwen2.5-Coder-32B-Instruct-GGUF",
+        "provider": "unsloth"
+      },
+      {
+        "repo": "bartowski/Qwen2.5-Coder-32B-Instruct-GGUF",
+        "provider": "bartowski"
+      },
+      {
+        "repo": "mradermacher/Qwen2.5-Coder-32B-Instruct-GGUF",
+        "provider": "mradermacher"
+      }
+    ],
     "recommended_settings": null,
     "recommended_settings_source": null,
     "recommended_settings_notes": []
@@ -3814,6 +3860,20 @@
     "num_attention_heads": 40,
     "num_key_value_heads": 8,
     "head_dim": 128,
+    "gguf_sources": [
+      {
+        "repo": "unsloth/DeepSeek-R1-Distill-Qwen-32B-GGUF",
+        "provider": "unsloth"
+      },
+      {
+        "repo": "bartowski/DeepSeek-R1-Distill-Qwen-32B-GGUF",
+        "provider": "bartowski"
+      },
+      {
+        "repo": "mradermacher/DeepSeek-R1-Distill-Qwen-32B-GGUF",
+        "provider": "mradermacher"
+      }
+    ],
     "recommended_settings": null,
     "recommended_settings_source": null,
     "recommended_settings_notes": []
@@ -3842,6 +3902,12 @@
     "num_attention_heads": null,
     "num_key_value_heads": null,
     "head_dim": null,
+    "gguf_sources": [
+      {
+        "repo": "mradermacher/CodeLlama-34b-Instruct-hf-GGUF",
+        "provider": "mradermacher"
+      }
+    ],
     "recommended_settings": null,
     "recommended_settings_source": null,
     "recommended_settings_notes": []
@@ -3862,8 +3928,22 @@
     "hf_downloads": 0,
     "hf_likes": 0,
     "release_date": null,
-    "recommended_settings": null,
-    "recommended_settings_source": null,
+    "gguf_sources": [
+      {
+        "repo": "TheBloke/Yi-34B-Chat-GGUF",
+        "provider": "TheBloke"
+      },
+      {
+        "repo": "mradermacher/Yi-34B-Chat-GGUF",
+        "provider": "mradermacher"
+      }
+    ],
+    "recommended_settings": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 40
+    },
+    "recommended_settings_source": "readme",
     "recommended_settings_notes": []
   },
   {
@@ -3882,6 +3962,16 @@
     "hf_downloads": 0,
     "hf_likes": 0,
     "release_date": null,
+    "gguf_sources": [
+      {
+        "repo": "bartowski/c4ai-command-r-v01-GGUF",
+        "provider": "bartowski"
+      },
+      {
+        "repo": "mradermacher/c4ai-command-r-v01-GGUF",
+        "provider": "mradermacher"
+      }
+    ],
     "recommended_settings": null,
     "recommended_settings_source": null,
     "recommended_settings_notes": []
@@ -3915,6 +4005,63 @@
     "num_experts": 256,
     "active_experts": 8,
     "active_parameters": 3000000000,
+    "gguf_sources": [
+      {
+        "repo": "unsloth/Qwen3.5-35B-A3B-GGUF",
+        "provider": "unsloth"
+      },
+      {
+        "repo": "ggml-org/Qwen3.5-35B-A3B-GGUF",
+        "provider": "ggml-org"
+      },
+      {
+        "repo": "mradermacher/Qwen3.5-35B-A3B-GGUF",
+        "provider": "mradermacher"
+      }
+    ],
+    "recommended_settings": null,
+    "recommended_settings_source": null,
+    "recommended_settings_notes": []
+  },
+  {
+    "name": "Qwen/Qwen3.6-35B-A3B",
+    "provider": "Alibaba",
+    "parameter_count": "36.0B",
+    "parameters_raw": 35951822704,
+    "min_ram_gb": 20.1,
+    "recommended_ram_gb": 33.5,
+    "min_vram_gb": 18.4,
+    "quantization": "Q4_K_M",
+    "format": "gguf",
+    "context_length": 262144,
+    "use_case": "General purpose",
+    "capabilities": [
+      "vision",
+      "tool_use"
+    ],
+    "pipeline_tag": "image-text-to-text",
+    "architecture": "qwen3_5_moe",
+    "hf_downloads": 458436,
+    "hf_likes": 1095,
+    "release_date": "2026-04-15",
+    "num_hidden_layers": null,
+    "num_attention_heads": null,
+    "num_key_value_heads": null,
+    "head_dim": null,
+    "is_moe": true,
+    "num_experts": 256,
+    "active_experts": 8,
+    "active_parameters": 3000000000,
+    "gguf_sources": [
+      {
+        "repo": "unsloth/Qwen3.6-35B-A3B-GGUF",
+        "provider": "unsloth"
+      },
+      {
+        "repo": "ggml-org/Qwen3.6-35B-A3B-GGUF",
+        "provider": "ggml-org"
+      }
+    ],
     "recommended_settings": null,
     "recommended_settings_source": null,
     "recommended_settings_notes": []
@@ -3935,6 +4082,12 @@
     "hf_downloads": 0,
     "hf_likes": 0,
     "release_date": null,
+    "gguf_sources": [
+      {
+        "repo": "mradermacher/falcon-40b-instruct-GGUF",
+        "provider": "mradermacher"
+      }
+    ],
     "recommended_settings": null,
     "recommended_settings_source": null,
     "recommended_settings_notes": []
@@ -3967,6 +4120,16 @@
     "num_experts": 8,
     "active_experts": 2,
     "active_parameters": 12900000000,
+    "gguf_sources": [
+      {
+        "repo": "TheBloke/Mixtral-8x7B-Instruct-v0.1-GGUF",
+        "provider": "TheBloke"
+      },
+      {
+        "repo": "mradermacher/Mixtral-8x7B-Instruct-v0.1-GGUF",
+        "provider": "mradermacher"
+      }
+    ],
     "recommended_settings": null,
     "recommended_settings_source": null,
     "recommended_settings_notes": []
@@ -3999,8 +4162,20 @@
     "num_experts": 8,
     "active_experts": 2,
     "active_parameters": 12900000000,
-    "recommended_settings": null,
-    "recommended_settings_source": null,
+    "gguf_sources": [
+      {
+        "repo": "TheBloke/Nous-Hermes-2-Mixtral-8x7B-DPO-GGUF",
+        "provider": "TheBloke"
+      },
+      {
+        "repo": "mradermacher/Nous-Hermes-2-Mixtral-8x7B-DPO-GGUF",
+        "provider": "mradermacher"
+      }
+    ],
+    "recommended_settings": {
+      "temperature": 0.8
+    },
+    "recommended_settings_source": "readme",
     "recommended_settings_notes": []
   },
   {
@@ -4055,6 +4230,20 @@
     "num_attention_heads": null,
     "num_key_value_heads": null,
     "head_dim": null,
+    "gguf_sources": [
+      {
+        "repo": "unsloth/Llama-3.3-70B-Instruct-GGUF",
+        "provider": "unsloth"
+      },
+      {
+        "repo": "bartowski/Llama-3.3-70B-Instruct-GGUF",
+        "provider": "bartowski"
+      },
+      {
+        "repo": "mradermacher/Llama-3.3-70B-Instruct-GGUF",
+        "provider": "mradermacher"
+      }
+    ],
     "recommended_settings": null,
     "recommended_settings_source": null,
     "recommended_settings_notes": []
@@ -4083,6 +4272,16 @@
     "num_attention_heads": 64,
     "num_key_value_heads": 8,
     "head_dim": 128,
+    "gguf_sources": [
+      {
+        "repo": "bartowski/Qwen2.5-72B-Instruct-GGUF",
+        "provider": "bartowski"
+      },
+      {
+        "repo": "mradermacher/Qwen2.5-72B-Instruct-GGUF",
+        "provider": "mradermacher"
+      }
+    ],
     "recommended_settings": null,
     "recommended_settings_source": null,
     "recommended_settings_notes": []
@@ -4115,8 +4314,22 @@
     "num_experts": 512,
     "active_experts": 10,
     "active_parameters": 3000000000,
-    "recommended_settings": null,
-    "recommended_settings_source": null,
+    "gguf_sources": [
+      {
+        "repo": "unsloth/Qwen3-Coder-Next-GGUF",
+        "provider": "unsloth"
+      },
+      {
+        "repo": "ggml-org/Qwen3-Coder-Next-GGUF",
+        "provider": "ggml-org"
+      }
+    ],
+    "recommended_settings": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 40
+    },
+    "recommended_settings_source": "readme",
     "recommended_settings_notes": []
   },
   {
@@ -4148,6 +4361,16 @@
     "num_experts": 256,
     "active_experts": 8,
     "active_parameters": 10000000000,
+    "gguf_sources": [
+      {
+        "repo": "unsloth/Qwen3.5-122B-A10B-GGUF",
+        "provider": "unsloth"
+      },
+      {
+        "repo": "mradermacher/Qwen3.5-122B-A10B-GGUF",
+        "provider": "mradermacher"
+      }
+    ],
     "recommended_settings": null,
     "recommended_settings_source": null,
     "recommended_settings_notes": []
@@ -4206,6 +4429,12 @@
     "num_attention_heads": 32,
     "num_key_value_heads": 32,
     "head_dim": 128,
+    "gguf_sources": [
+      {
+        "repo": "unsloth/dots.llm1.inst-GGUF",
+        "provider": "unsloth"
+      }
+    ],
     "recommended_settings": null,
     "recommended_settings_source": null,
     "recommended_settings_notes": []
@@ -4288,8 +4517,22 @@
     "num_experts": 256,
     "active_experts": 8,
     "active_parameters": 10000000000,
-    "recommended_settings": null,
-    "recommended_settings_source": null,
+    "gguf_sources": [
+      {
+        "repo": "unsloth/MiniMax-M2.7-GGUF",
+        "provider": "unsloth"
+      },
+      {
+        "repo": "mradermacher/MiniMax-M2.7-GGUF",
+        "provider": "mradermacher"
+      }
+    ],
+    "recommended_settings": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 40
+    },
+    "recommended_settings_source": "readme",
     "recommended_settings_notes": []
   },
   {
@@ -4318,8 +4561,22 @@
     "num_experts": 256,
     "active_experts": 8,
     "active_parameters": 10000000000,
-    "recommended_settings": null,
-    "recommended_settings_source": null,
+    "gguf_sources": [
+      {
+        "repo": "unsloth/MiniMax-M2.5-GGUF",
+        "provider": "unsloth"
+      },
+      {
+        "repo": "mradermacher/MiniMax-M2.5-GGUF",
+        "provider": "mradermacher"
+      }
+    ],
+    "recommended_settings": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 40
+    },
+    "recommended_settings_source": "readme",
     "recommended_settings_notes": []
   },
   {
@@ -4350,8 +4607,23 @@
     "num_experts": 128,
     "active_experts": 8,
     "active_parameters": 22000000000,
-    "recommended_settings": null,
-    "recommended_settings_source": null,
+    "gguf_sources": [
+      {
+        "repo": "unsloth/Qwen3-235B-A22B-GGUF",
+        "provider": "unsloth"
+      },
+      {
+        "repo": "ggml-org/Qwen3-235B-A22B-GGUF",
+        "provider": "ggml-org"
+      }
+    ],
+    "recommended_settings": {
+      "temperature": 0.6,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0
+    },
+    "recommended_settings_source": "params",
     "recommended_settings_notes": []
   },
   {
@@ -4402,6 +4674,16 @@
     "num_attention_heads": 64,
     "num_key_value_heads": 4,
     "head_dim": 192,
+    "gguf_sources": [
+      {
+        "repo": "unsloth/MiMo-V2-Flash-GGUF",
+        "provider": "unsloth"
+      },
+      {
+        "repo": "mradermacher/MiMo-V2-Flash-GGUF",
+        "provider": "mradermacher"
+      }
+    ],
     "recommended_settings": null,
     "recommended_settings_source": null,
     "recommended_settings_notes": []
@@ -4434,6 +4716,16 @@
     "num_experts": 16,
     "active_experts": 1,
     "active_parameters": 17000000000,
+    "gguf_sources": [
+      {
+        "repo": "unsloth/Llama-4-Maverick-17B-128E-Instruct-GGUF",
+        "provider": "unsloth"
+      },
+      {
+        "repo": "mradermacher/Llama-4-Maverick-17B-128E-Instruct-GGUF",
+        "provider": "mradermacher"
+      }
+    ],
     "recommended_settings": null,
     "recommended_settings_source": null,
     "recommended_settings_notes": []
@@ -4467,6 +4759,16 @@
     "num_experts": 512,
     "active_experts": 10,
     "active_parameters": 17000000000,
+    "gguf_sources": [
+      {
+        "repo": "unsloth/Qwen3.5-397B-A17B-GGUF",
+        "provider": "unsloth"
+      },
+      {
+        "repo": "mradermacher/Qwen3.5-397B-A17B-GGUF",
+        "provider": "mradermacher"
+      }
+    ],
     "recommended_settings": null,
     "recommended_settings_source": null,
     "recommended_settings_notes": []
@@ -4527,8 +4829,19 @@
     "num_experts": 160,
     "active_experts": 8,
     "active_parameters": 35000000000,
-    "recommended_settings": null,
-    "recommended_settings_source": null,
+    "gguf_sources": [
+      {
+        "repo": "unsloth/Qwen3-Coder-480B-A35B-Instruct-GGUF",
+        "provider": "unsloth"
+      }
+    ],
+    "recommended_settings": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0
+    },
+    "recommended_settings_source": "params",
     "recommended_settings_notes": []
   },
   {
@@ -4557,6 +4870,12 @@
     "num_experts": 256,
     "active_experts": 8,
     "active_parameters": 37000000000,
+    "gguf_sources": [
+      {
+        "repo": "unsloth/DeepSeek-V3-GGUF",
+        "provider": "unsloth"
+      }
+    ],
     "recommended_settings": null,
     "recommended_settings_source": null,
     "recommended_settings_notes": []
@@ -4587,6 +4906,16 @@
     "num_experts": 256,
     "active_experts": 8,
     "active_parameters": 37000000000,
+    "gguf_sources": [
+      {
+        "repo": "unsloth/DeepSeek-R1-GGUF",
+        "provider": "unsloth"
+      },
+      {
+        "repo": "bartowski/DeepSeek-R1-GGUF",
+        "provider": "bartowski"
+      }
+    ],
     "recommended_settings": null,
     "recommended_settings_source": null,
     "recommended_settings_notes": []
@@ -4637,8 +4966,17 @@
     "num_attention_heads": 128,
     "num_key_value_heads": 128,
     "head_dim": 56,
-    "recommended_settings": null,
-    "recommended_settings_source": null,
+    "gguf_sources": [
+      {
+        "repo": "unsloth/DeepSeek-V3.2-GGUF",
+        "provider": "unsloth"
+      }
+    ],
+    "recommended_settings": {
+      "temperature": 1.0,
+      "top_p": 0.95
+    },
+    "recommended_settings_source": "readme",
     "recommended_settings_notes": []
   },
   {
@@ -4663,6 +5001,12 @@
     "num_attention_heads": 64,
     "num_key_value_heads": 64,
     "head_dim": 64,
+    "gguf_sources": [
+      {
+        "repo": "unsloth/GLM-5-GGUF",
+        "provider": "unsloth"
+      }
+    ],
     "recommended_settings": null,
     "recommended_settings_source": null,
     "recommended_settings_notes": []
@@ -4689,8 +5033,16 @@
     "num_attention_heads": 64,
     "num_key_value_heads": 64,
     "head_dim": 112,
-    "recommended_settings": null,
-    "recommended_settings_source": null,
+    "gguf_sources": [
+      {
+        "repo": "unsloth/Kimi-K2-Instruct-GGUF",
+        "provider": "unsloth"
+      }
+    ],
+    "recommended_settings": {
+      "temperature": 0.6
+    },
+    "recommended_settings_source": "readme",
     "recommended_settings_notes": []
   },
   {
@@ -4717,8 +5069,16 @@
     "num_attention_heads": null,
     "num_key_value_heads": null,
     "head_dim": null,
-    "recommended_settings": null,
-    "recommended_settings_source": null,
+    "gguf_sources": [
+      {
+        "repo": "unsloth/Kimi-K2.5-GGUF",
+        "provider": "unsloth"
+      }
+    ],
+    "recommended_settings": {
+      "temperature": 1.0
+    },
+    "recommended_settings_source": "readme",
     "recommended_settings_notes": []
   }
 ]
