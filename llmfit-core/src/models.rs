@@ -1,3 +1,4 @@
+use include_flate::flate;
 use serde::{Deserialize, Serialize};
 
 /// Quantization levels ordered from best quality to most compressed.
@@ -703,7 +704,7 @@ struct HfModelEntry {
     recommended_settings_notes: Vec<String>,
 }
 
-const HF_MODELS_JSON: &str = include_str!("../data/hf_models.json");
+flate!(static HF_MODELS_JSON: str from "data/hf_models.json");
 
 pub struct ModelDatabase {
     models: Vec<LlmModel>,
@@ -724,10 +725,10 @@ pub(crate) fn canonical_slug(name: &str) -> String {
     slug.to_lowercase().replace(['-', '_', '.'], "")
 }
 
-/// Parse the compile-time embedded JSON into a flat `Vec<LlmModel>`.
+/// Parse the compile-time embedded compressed JSON into a flat `Vec<LlmModel>`.
 fn load_embedded() -> Vec<LlmModel> {
     let entries: Vec<HfModelEntry> =
-        serde_json::from_str(HF_MODELS_JSON).expect("Failed to parse embedded hf_models.json");
+        serde_json::from_str(&HF_MODELS_JSON).expect("Failed to parse embedded hf_models.json");
     entries
         .into_iter()
         .map(|e| {
