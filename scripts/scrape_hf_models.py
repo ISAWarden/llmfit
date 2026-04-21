@@ -703,48 +703,43 @@ def _normalize_recommended_settings(raw: dict) -> tuple[dict[str, float | int], 
 def _parse_recommended_settings_text(text: str) -> tuple[dict[str, float | int] | None, list[str]]:
     """Parse explicit generation settings from a text blob.
 
-    This intentionally accepts only unambiguous numeric key/value pairs. If a
-    key appears with multiple different values, the block is treated as
-    ambiguous and rejected.
+    If multiple settings blocks appear in the same text, keep the first value
+    seen for each supported key. This prefers the first published preset in a
+    README instead of rejecting the file as ambiguous.
     """
     matches = list(RECOMMENDED_SETTINGS_PATTERN.finditer(text))
     if not matches:
         return None, []
 
-    values_by_key: dict[str, set[float | int]] = {}
+    normalized: dict[str, float | int] = {}
+    ignored_duplicates: set[str] = set()
     for match in matches:
         key = match.group("key").lower()
         numeric_value = _coerce_numeric(match.group("value"))
         if numeric_value is None:
             return None, [f"rejected malformed {key} value"]
+
         if key == "top_k":
             numeric_value = int(numeric_value)
         else:
             numeric_value = float(numeric_value)
-        values_by_key.setdefault(key, set()).add(numeric_value)
 
-    conflicts = {
-        key: sorted(values, key=float)
-        for key, values in values_by_key.items()
-        if len(values) > 1
-    }
-    if conflicts:
-        return None, [
-            "ambiguous README settings with conflicting values for "
-            + ", ".join(sorted(conflicts.keys()))
-        ]
+        if key in normalized:
+            if normalized[key] != numeric_value:
+                ignored_duplicates.add(key)
+            continue
 
-    normalized: dict[str, float | int] = {}
-    for key, values in values_by_key.items():
-        value = next(iter(values))
-        if key == "top_k":
-            normalized[key] = int(value)
-        else:
-            normalized[key] = float(value)
+        normalized[key] = numeric_value
 
     normalized, notes = _normalize_recommended_settings(normalized)
     if not normalized:
         return None, notes
+
+    if ignored_duplicates:
+        notes.append(
+            "multiple README presets found; kept first values for "
+            + ", ".join(sorted(ignored_duplicates))
+        )
 
     return normalized, notes
 
