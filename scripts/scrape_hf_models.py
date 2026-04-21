@@ -84,6 +84,8 @@ TARGET_MODELS = [
     "Qwen/Qwen3.5-35B-A3B",
     "Qwen/Qwen3.5-122B-A10B",
     "Qwen/Qwen3.5-397B-A17B",
+    # Qwen 3.6
+    "Qwen/Qwen3.6-35B-A3B",
     # Qwen3.5 Small Series (Instruct)
     "Qwen/Qwen3.5-0.8B",
     "Qwen/Qwen3.5-2B",
@@ -296,6 +298,7 @@ MOE_ACTIVE_PARAMS = {
     "Qwen/Qwen3.5-35B-A3B": 3_000_000_000,
     "Qwen/Qwen3.5-122B-A10B": 10_000_000_000,
     "Qwen/Qwen3.5-397B-A17B": 17_000_000_000,
+    "Qwen/Qwen3.6-35B-A3B": 3_000_000_000,
     "meta-llama/Llama-4-Scout-17B-16E-Instruct": 17_000_000_000,
     "meta-llama/Llama-4-Maverick-17B-128E-Instruct": 17_000_000_000,
     "xai-org/grok-1": 86_000_000_000,
