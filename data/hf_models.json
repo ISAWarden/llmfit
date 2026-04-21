@@ -14,8 +14,8 @@
     "capabilities": [],
     "pipeline_tag": "sentence-similarity",
     "architecture": "nomic_bert",
-    "hf_downloads": 12327634,
-    "hf_likes": 799,
+    "hf_downloads": 12545642,
+    "hf_likes": 800,
     "release_date": "2024-02-10",
     "num_hidden_layers": 12,
     "num_attention_heads": 12,
@@ -26,10 +26,7 @@
         "repo": "mradermacher/nomic-embed-text-v1.5-GGUF",
         "provider": "mradermacher"
       }
-    ],
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    ]
   },
   {
     "name": "BAAI/bge-large-en-v1.5",
@@ -46,7 +43,7 @@
     "capabilities": [],
     "pipeline_tag": "feature-extraction",
     "architecture": "bert",
-    "hf_downloads": 11154544,
+    "hf_downloads": 11473891,
     "hf_likes": 653,
     "release_date": "2023-09-12",
     "num_hidden_layers": 24,
@@ -58,10 +55,7 @@
         "repo": "mradermacher/bge-large-en-v1.5-GGUF",
         "provider": "mradermacher"
       }
-    ],
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    ]
   },
   {
     "name": "LiquidAI/LFM2-ColBERT-350M",
@@ -78,16 +72,13 @@
     "capabilities": [],
     "pipeline_tag": "sentence-similarity",
     "architecture": "lfm2",
-    "hf_downloads": 65860,
+    "hf_downloads": 69296,
     "hf_likes": 129,
     "release_date": "2025-10-28",
     "num_hidden_layers": 16,
     "num_attention_heads": 16,
     "num_key_value_heads": 8,
-    "head_dim": 64,
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    "head_dim": 64
   },
   {
     "name": "LiquidAI/LFM2-350M",
@@ -104,7 +95,7 @@
     "capabilities": [],
     "pipeline_tag": "text-generation",
     "architecture": "lfm2",
-    "hf_downloads": 31300,
+    "hf_downloads": 31139,
     "hf_likes": 249,
     "release_date": "2025-07-10",
     "num_hidden_layers": 16,
@@ -175,7 +166,7 @@
     "capabilities": [],
     "pipeline_tag": "text-generation",
     "architecture": "lfm2",
-    "hf_downloads": 838,
+    "hf_downloads": 831,
     "hf_likes": 57,
     "release_date": "2025-08-25",
     "num_hidden_layers": 16,
@@ -207,7 +198,7 @@
     "capabilities": [],
     "pipeline_tag": "translation",
     "architecture": "lfm2",
-    "hf_downloads": 1030,
+    "hf_downloads": 1028,
     "hf_likes": 87,
     "release_date": "2025-09-03",
     "num_hidden_layers": 16,
@@ -239,7 +230,7 @@
     "capabilities": [],
     "pipeline_tag": "text-generation",
     "architecture": "lfm2",
-    "hf_downloads": 1166,
+    "hf_downloads": 1165,
     "hf_likes": 54,
     "release_date": "2025-09-30",
     "num_hidden_layers": 16,
@@ -251,10 +242,7 @@
         "repo": "mradermacher/LFM2-350M-PII-Extract-JP-GGUF",
         "provider": "mradermacher"
       }
-    ],
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    ]
   },
   {
     "name": "LiquidAI/LFM2-VL-450M",
@@ -273,7 +261,7 @@
     ],
     "pipeline_tag": "image-text-to-text",
     "architecture": "lfm2_vl",
-    "hf_downloads": 31000,
+    "hf_downloads": 34167,
     "hf_likes": 146,
     "release_date": "2025-08-12",
     "num_hidden_layers": null,
@@ -289,10 +277,7 @@
         "repo": "mradermacher/LFM2-VL-450M-GGUF",
         "provider": "mradermacher"
       }
-    ],
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    ]
   },
   {
     "name": "LiquidAI/LFM2-700M",
@@ -309,7 +294,7 @@
     "capabilities": [],
     "pipeline_tag": "text-generation",
     "architecture": "lfm2",
-    "hf_downloads": 11398,
+    "hf_downloads": 11344,
     "hf_likes": 110,
     "release_date": "2025-07-10",
     "num_hidden_layers": 16,
@@ -346,8 +331,8 @@
     ],
     "pipeline_tag": "text-generation",
     "architecture": "qwen3",
-    "hf_downloads": 16082201,
-    "hf_likes": 1197,
+    "hf_downloads": 16401303,
+    "hf_likes": 1201,
     "release_date": "2025-04-27",
     "num_hidden_layers": 28,
     "num_attention_heads": 16,
@@ -366,15 +351,7 @@
         "repo": "mradermacher/Qwen3-0.6B-GGUF",
         "provider": "mradermacher"
       }
-    ],
-    "recommended_settings": {
-      "temperature": 0.6,
-      "top_p": 0.95,
-      "top_k": 20,
-      "min_p": 0.0
-    },
-    "recommended_settings_source": "params",
-    "recommended_settings_notes": []
+    ]
   },
   {
     "name": "Qwen/Qwen3.5-0.8B",
@@ -394,8 +371,8 @@
     ],
     "pipeline_tag": "image-text-to-text",
     "architecture": "qwen3_5",
-    "hf_downloads": 2732181,
-    "hf_likes": 501,
+    "hf_downloads": 2795968,
+    "hf_likes": 506,
     "release_date": "2026-02-28",
     "num_hidden_layers": null,
     "num_attention_heads": null,
@@ -433,8 +410,8 @@
     ],
     "pipeline_tag": "image-text-to-text",
     "architecture": "qwen3_5",
-    "hf_downloads": 137379,
-    "hf_likes": 63,
+    "hf_downloads": 140923,
+    "hf_likes": 66,
     "release_date": "2026-02-28",
     "num_hidden_layers": null,
     "num_attention_heads": null,
@@ -445,10 +422,7 @@
         "repo": "mradermacher/Qwen3.5-0.8B-Base-GGUF",
         "provider": "mradermacher"
       }
-    ],
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    ]
   },
   {
     "name": "google/gemma-3-1b-it",
@@ -467,8 +441,8 @@
     ],
     "pipeline_tag": "text-generation",
     "architecture": "gemma3_text",
-    "hf_downloads": 634815,
-    "hf_likes": 928,
+    "hf_downloads": 620093,
+    "hf_likes": 929,
     "release_date": "2025-03-10",
     "num_hidden_layers": null,
     "num_attention_heads": null,
@@ -512,7 +486,7 @@
     "capabilities": [],
     "pipeline_tag": "text-generation",
     "architecture": "llama",
-    "hf_downloads": 3015900,
+    "hf_downloads": 3045626,
     "hf_likes": 1567,
     "release_date": "2023-12-30",
     "num_hidden_layers": 22,
@@ -528,14 +502,7 @@
         "repo": "mradermacher/TinyLlama-1.1B-Chat-v1.0-GGUF",
         "provider": "mradermacher"
       }
-    ],
-    "recommended_settings": {
-      "temperature": 0.7,
-      "top_p": 0.95,
-      "top_k": 50
-    },
-    "recommended_settings_source": "readme",
-    "recommended_settings_notes": []
+    ]
   },
   {
     "name": "LiquidAI/LFM2-1.2B",
@@ -552,7 +519,7 @@
     "capabilities": [],
     "pipeline_tag": "text-generation",
     "architecture": "lfm2",
-    "hf_downloads": 47949,
+    "hf_downloads": 50703,
     "hf_likes": 352,
     "release_date": "2025-07-10",
     "num_hidden_layers": 16,
@@ -587,7 +554,7 @@
     "capabilities": [],
     "pipeline_tag": "text-generation",
     "architecture": "lfm2",
-    "hf_downloads": 21112,
+    "hf_downloads": 21324,
     "hf_likes": 124,
     "release_date": "2026-01-05",
     "num_hidden_layers": 16,
@@ -619,8 +586,8 @@
     "capabilities": [],
     "pipeline_tag": "text-generation",
     "architecture": "lfm2",
-    "hf_downloads": 391062,
-    "hf_likes": 569,
+    "hf_downloads": 409039,
+    "hf_likes": 570,
     "release_date": "2026-01-06",
     "num_hidden_layers": 16,
     "num_attention_heads": 32,
@@ -659,8 +626,8 @@
     "capabilities": [],
     "pipeline_tag": "text-generation",
     "architecture": "lfm2",
-    "hf_downloads": 32994,
-    "hf_likes": 331,
+    "hf_downloads": 32390,
+    "hf_likes": 332,
     "release_date": "2026-01-20",
     "num_hidden_layers": 16,
     "num_attention_heads": 32,
@@ -695,7 +662,7 @@
     "capabilities": [],
     "pipeline_tag": "text-generation",
     "architecture": "lfm2",
-    "hf_downloads": 2401,
+    "hf_downloads": 2531,
     "hf_likes": 143,
     "release_date": "2026-01-04",
     "num_hidden_layers": 16,
@@ -727,7 +694,7 @@
     "capabilities": [],
     "pipeline_tag": "text-generation",
     "architecture": "lfm2",
-    "hf_downloads": 597,
+    "hf_downloads": 594,
     "hf_likes": 98,
     "release_date": "2025-09-03",
     "num_hidden_layers": 16,
@@ -759,7 +726,7 @@
     "capabilities": [],
     "pipeline_tag": "text-generation",
     "architecture": "lfm2",
-    "hf_downloads": 821,
+    "hf_downloads": 856,
     "hf_likes": 118,
     "release_date": "2025-09-03",
     "num_hidden_layers": 16,
@@ -791,7 +758,7 @@
     "capabilities": [],
     "pipeline_tag": "text-generation",
     "architecture": "lfm2",
-    "hf_downloads": 1478,
+    "hf_downloads": 1480,
     "hf_likes": 107,
     "release_date": "2025-08-22",
     "num_hidden_layers": 16,
@@ -803,10 +770,7 @@
         "repo": "mradermacher/LFM2-1.2B-Extract-GGUF",
         "provider": "mradermacher"
       }
-    ],
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    ]
   },
   {
     "name": "meta-llama/Llama-3.2-1B",
@@ -823,7 +787,7 @@
     "capabilities": [],
     "pipeline_tag": "text-generation",
     "architecture": "llama",
-    "hf_downloads": 1248450,
+    "hf_downloads": 1280373,
     "hf_likes": 2369,
     "release_date": "2024-09-18",
     "num_hidden_layers": null,
@@ -835,10 +799,7 @@
         "repo": "mradermacher/Llama-3.2-1B-GGUF",
         "provider": "mradermacher"
       }
-    ],
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    ]
   },
   {
     "name": "LGAI-EXAONE/EXAONE-4.0-1.2B",
@@ -855,7 +816,7 @@
     "capabilities": [],
     "pipeline_tag": "text-generation",
     "architecture": "exaone4",
-    "hf_downloads": 31280,
+    "hf_downloads": 31302,
     "hf_likes": 181,
     "release_date": "2025-07-11",
     "num_hidden_layers": 30,
@@ -867,10 +828,7 @@
         "repo": "mradermacher/EXAONE-4.0-1.2B-GGUF",
         "provider": "mradermacher"
       }
-    ],
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    ]
   },
   {
     "name": "LiquidAI/LFM2-Audio-1.5B",
@@ -887,7 +845,7 @@
     "capabilities": [],
     "pipeline_tag": "audio-to-audio",
     "architecture": "unknown",
-    "hf_downloads": 339,
+    "hf_downloads": 330,
     "hf_likes": 346,
     "release_date": "2025-08-28",
     "num_hidden_layers": null,
@@ -919,16 +877,13 @@
     "capabilities": [],
     "pipeline_tag": "audio-to-audio",
     "architecture": "unknown",
-    "hf_downloads": 885,
-    "hf_likes": 379,
+    "hf_downloads": 890,
+    "hf_likes": 381,
     "release_date": "2025-12-18",
     "num_hidden_layers": null,
     "num_attention_heads": null,
     "num_key_value_heads": null,
-    "head_dim": null,
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    "head_dim": null
   },
   {
     "name": "Qwen/Qwen2.5-Coder-1.5B-Instruct",
@@ -947,8 +902,8 @@
     ],
     "pipeline_tag": "text-generation",
     "architecture": "qwen2",
-    "hf_downloads": 252321,
-    "hf_likes": 114,
+    "hf_downloads": 230991,
+    "hf_likes": 116,
     "release_date": "2024-09-18",
     "num_hidden_layers": 28,
     "num_attention_heads": 12,
@@ -967,10 +922,7 @@
         "repo": "mradermacher/Qwen2.5-Coder-1.5B-Instruct-GGUF",
         "provider": "mradermacher"
       }
-    ],
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    ]
   },
   {
     "name": "LiquidAI/LFM2-VL-1.6B",
@@ -989,7 +941,7 @@
     ],
     "pipeline_tag": "image-text-to-text",
     "architecture": "lfm2_vl",
-    "hf_downloads": 4164,
+    "hf_downloads": 4168,
     "hf_likes": 226,
     "release_date": "2025-08-12",
     "num_hidden_layers": null,
@@ -1023,7 +975,7 @@
     ],
     "pipeline_tag": "image-text-to-text",
     "architecture": "lfm2_vl",
-    "hf_downloads": 122214,
+    "hf_downloads": 121988,
     "hf_likes": 274,
     "release_date": "2026-01-05",
     "num_hidden_layers": null,
@@ -1035,13 +987,7 @@
         "repo": "unsloth/LFM2.5-VL-1.6B-GGUF",
         "provider": "unsloth"
       }
-    ],
-    "recommended_settings": {
-      "temperature": 0.1,
-      "min_p": 0.15
-    },
-    "recommended_settings_source": "readme",
-    "recommended_settings_notes": []
+    ]
   },
   {
     "name": "stabilityai/stablelm-2-1_6b-chat",
@@ -1058,7 +1004,7 @@
     "capabilities": [],
     "pipeline_tag": "text-generation",
     "architecture": "stablelm",
-    "hf_downloads": 2123,
+    "hf_downloads": 2505,
     "hf_likes": 35,
     "release_date": "2024-04-08",
     "num_hidden_layers": 24,
@@ -1070,10 +1016,7 @@
         "repo": "mradermacher/stablelm-2-1_6b-chat-GGUF",
         "provider": "mradermacher"
       }
-    ],
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    ]
   },
   {
     "name": "Qwen/Qwen3-1.7B",
@@ -1092,7 +1035,7 @@
     ],
     "pipeline_tag": "text-generation",
     "architecture": "qwen3",
-    "hf_downloads": 7066578,
+    "hf_downloads": 6988991,
     "hf_likes": 450,
     "release_date": "2025-04-27",
     "num_hidden_layers": 28,
@@ -1112,15 +1055,7 @@
         "repo": "mradermacher/Qwen3-1.7B-GGUF",
         "provider": "mradermacher"
       }
-    ],
-    "recommended_settings": {
-      "temperature": 0.6,
-      "top_p": 0.95,
-      "top_k": 20,
-      "min_p": 0.0
-    },
-    "recommended_settings_source": "params",
-    "recommended_settings_notes": []
+    ]
   },
   {
     "name": "Qwen/Qwen3.5-2B",
@@ -1140,8 +1075,8 @@
     ],
     "pipeline_tag": "image-text-to-text",
     "architecture": "qwen3_5",
-    "hf_downloads": 1516483,
-    "hf_likes": 253,
+    "hf_downloads": 1555986,
+    "hf_likes": 255,
     "release_date": "2026-02-28",
     "num_hidden_layers": null,
     "num_attention_heads": null,
@@ -1179,16 +1114,13 @@
     ],
     "pipeline_tag": "image-text-to-text",
     "architecture": "qwen3_5",
-    "hf_downloads": 57548,
+    "hf_downloads": 60425,
     "hf_likes": 65,
     "release_date": "2026-02-28",
     "num_hidden_layers": null,
     "num_attention_heads": null,
     "num_key_value_heads": null,
-    "head_dim": null,
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    "head_dim": null
   },
   {
     "name": "LiquidAI/LFM2-2.6B",
@@ -1205,7 +1137,7 @@
     "capabilities": [],
     "pipeline_tag": "text-generation",
     "architecture": "lfm2",
-    "hf_downloads": 6381,
+    "hf_downloads": 6367,
     "hf_likes": 187,
     "release_date": "2025-09-22",
     "num_hidden_layers": 30,
@@ -1237,7 +1169,7 @@
     "capabilities": [],
     "pipeline_tag": "text-generation",
     "architecture": "lfm2",
-    "hf_downloads": 21467,
+    "hf_downloads": 21048,
     "hf_likes": 337,
     "release_date": "2025-12-25",
     "num_hidden_layers": 30,
@@ -1276,7 +1208,7 @@
     "capabilities": [],
     "pipeline_tag": "text-generation",
     "architecture": "lfm2",
-    "hf_downloads": 551,
+    "hf_downloads": 561,
     "hf_likes": 162,
     "release_date": "2026-01-05",
     "num_hidden_layers": 30,
@@ -1288,10 +1220,7 @@
         "repo": "mradermacher/LFM2-2.6B-Transcript-GGUF",
         "provider": "mradermacher"
       }
-    ],
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    ]
   },
   {
     "name": "google/gemma-2-2b-it",
@@ -1308,8 +1237,8 @@
     "capabilities": [],
     "pipeline_tag": "text-generation",
     "architecture": "gemma2",
-    "hf_downloads": 355798,
-    "hf_likes": 1336,
+    "hf_downloads": 352044,
+    "hf_likes": 1338,
     "release_date": "2024-07-16",
     "num_hidden_layers": null,
     "num_attention_heads": null,
@@ -1324,10 +1253,7 @@
         "repo": "mradermacher/gemma-2-2b-it-GGUF",
         "provider": "mradermacher"
       }
-    ],
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    ]
   },
   {
     "name": "LiquidAI/LFM2-VL-3B",
@@ -1346,16 +1272,13 @@
     ],
     "pipeline_tag": "image-text-to-text",
     "architecture": "lfm2_vl",
-    "hf_downloads": 11874,
+    "hf_downloads": 11932,
     "hf_likes": 133,
     "release_date": "2025-10-22",
     "num_hidden_layers": null,
     "num_attention_heads": null,
     "num_key_value_heads": null,
-    "head_dim": null,
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    "head_dim": null
   },
   {
     "name": "HuggingFaceTB/SmolLM3-3B",
@@ -1372,7 +1295,7 @@
     "capabilities": [],
     "pipeline_tag": "text-generation",
     "architecture": "smollm3",
-    "hf_downloads": 156108,
+    "hf_downloads": 157288,
     "hf_likes": 937,
     "release_date": "2025-07-08",
     "num_hidden_layers": 36,
@@ -1392,13 +1315,7 @@
         "repo": "mradermacher/SmolLM3-3B-GGUF",
         "provider": "mradermacher"
       }
-    ],
-    "recommended_settings": {
-      "temperature": 0.6,
-      "top_p": 0.95
-    },
-    "recommended_settings_source": "readme",
-    "recommended_settings_notes": []
+    ]
   },
   {
     "name": "ibm-granite/granite-4.0-h-micro",
@@ -1415,7 +1332,7 @@
     "capabilities": [],
     "pipeline_tag": "text-generation",
     "architecture": "granitemoehybrid",
-    "hf_downloads": 44178,
+    "hf_downloads": 44082,
     "hf_likes": 142,
     "release_date": "2025-09-16",
     "num_hidden_layers": 40,
@@ -1454,7 +1371,7 @@
     "capabilities": [],
     "pipeline_tag": "text-generation",
     "architecture": "llama",
-    "hf_downloads": 964963,
+    "hf_downloads": 1002042,
     "hf_likes": 754,
     "release_date": "2024-09-18",
     "num_hidden_layers": null,
@@ -1466,10 +1383,7 @@
         "repo": "mradermacher/Llama-3.2-3B-GGUF",
         "provider": "mradermacher"
       }
-    ],
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    ]
   },
   {
     "name": "Qwen/Qwen2.5-VL-3B-Instruct",
@@ -1489,8 +1403,8 @@
     ],
     "pipeline_tag": "image-text-to-text",
     "architecture": "qwen2_5_vl",
-    "hf_downloads": 6124275,
-    "hf_likes": 638,
+    "hf_downloads": 5827566,
+    "hf_likes": 639,
     "release_date": "2025-01-26",
     "num_hidden_layers": 36,
     "num_attention_heads": 16,
@@ -1509,10 +1423,7 @@
         "repo": "mradermacher/Qwen2.5-VL-3B-Instruct-GGUF",
         "provider": "mradermacher"
       }
-    ],
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    ]
   },
   {
     "name": "microsoft/Phi-4-mini-reasoning",
@@ -1563,7 +1474,7 @@
     "capabilities": [],
     "pipeline_tag": "text-generation",
     "architecture": "phi3",
-    "hf_downloads": 738629,
+    "hf_downloads": 741639,
     "hf_likes": 1414,
     "release_date": "2024-04-22",
     "num_hidden_layers": 32,
@@ -1599,8 +1510,8 @@
     "capabilities": [],
     "pipeline_tag": "text-generation",
     "architecture": "phi3",
-    "hf_downloads": 770926,
-    "hf_likes": 971,
+    "hf_downloads": 746804,
+    "hf_likes": 972,
     "release_date": "2024-08-16",
     "num_hidden_layers": 32,
     "num_attention_heads": 32,
@@ -1615,10 +1526,7 @@
         "repo": "mradermacher/Phi-3.5-mini-instruct-GGUF",
         "provider": "mradermacher"
       }
-    ],
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    ]
   },
   {
     "name": "google/gemma-3n-E2B-it",
@@ -1645,15 +1553,7 @@
         "repo": "ggml-org/gemma-3n-E2B-it-GGUF",
         "provider": "ggml-org"
       }
-    ],
-    "recommended_settings": {
-      "temperature": 1.0,
-      "top_p": 0.95,
-      "top_k": 64,
-      "min_p": 0.0
-    },
-    "recommended_settings_source": "params",
-    "recommended_settings_notes": []
+    ]
   },
   {
     "name": "Qwen/Qwen3.5-4B",
@@ -1673,8 +1573,8 @@
     ],
     "pipeline_tag": "image-text-to-text",
     "architecture": "qwen3_5",
-    "hf_downloads": 3043546,
-    "hf_likes": 474,
+    "hf_downloads": 3162335,
+    "hf_likes": 476,
     "release_date": "2026-02-27",
     "num_hidden_layers": null,
     "num_attention_heads": null,
@@ -1712,16 +1612,13 @@
     ],
     "pipeline_tag": "image-text-to-text",
     "architecture": "qwen3_5",
-    "hf_downloads": 94510,
-    "hf_likes": 58,
+    "hf_downloads": 96818,
+    "hf_likes": 59,
     "release_date": "2026-02-27",
     "num_hidden_layers": null,
     "num_attention_heads": null,
     "num_key_value_heads": null,
-    "head_dim": null,
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    "head_dim": null
   },
   {
     "name": "google/gemma-4-E2B-it",
@@ -1741,8 +1638,8 @@
     ],
     "pipeline_tag": "any-to-any",
     "architecture": "gemma4",
-    "hf_downloads": 1821412,
-    "hf_likes": 493,
+    "hf_downloads": 1942030,
+    "hf_likes": 501,
     "release_date": "2026-03-02",
     "num_hidden_layers": null,
     "num_attention_heads": null,
@@ -1761,14 +1658,7 @@
         "repo": "mradermacher/gemma-4-E2B-it-GGUF",
         "provider": "mradermacher"
       }
-    ],
-    "recommended_settings": {
-      "temperature": 1.0,
-      "top_p": 0.95,
-      "top_k": 64
-    },
-    "recommended_settings_source": "readme",
-    "recommended_settings_notes": []
+    ]
   },
   {
     "name": "microsoft/Phi-4-multimodal-instruct",
@@ -1785,16 +1675,13 @@
     "capabilities": [],
     "pipeline_tag": "automatic-speech-recognition",
     "architecture": "phi4mm",
-    "hf_downloads": 330528,
+    "hf_downloads": 339612,
     "hf_likes": 1581,
     "release_date": "2025-02-24",
     "num_hidden_layers": 32,
     "num_attention_heads": 24,
     "num_key_value_heads": 8,
-    "head_dim": 128,
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    "head_dim": 128
   },
   {
     "name": "01-ai/Yi-6B-Chat",
@@ -1811,7 +1698,7 @@
     "capabilities": [],
     "pipeline_tag": "text-generation",
     "architecture": "llama",
-    "hf_downloads": 25201,
+    "hf_downloads": 25300,
     "hf_likes": 70,
     "release_date": "2023-11-22",
     "num_hidden_layers": 32,
@@ -1823,10 +1710,7 @@
         "repo": "mradermacher/Yi-6B-Chat-GGUF",
         "provider": "mradermacher"
       }
-    ],
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    ]
   },
   {
     "name": "lmsys/vicuna-7b-v1.5",
@@ -1853,10 +1737,7 @@
         "repo": "mradermacher/vicuna-7b-v1.5-GGUF",
         "provider": "mradermacher"
       }
-    ],
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    ]
   },
   {
     "name": "meta-llama/CodeLlama-7b-Instruct-hf",
@@ -1873,7 +1754,7 @@
     "capabilities": [],
     "pipeline_tag": "text-generation",
     "architecture": "llama",
-    "hf_downloads": 2634,
+    "hf_downloads": 2592,
     "hf_likes": 59,
     "release_date": "2024-03-13",
     "num_hidden_layers": null,
@@ -1885,10 +1766,7 @@
         "repo": "mradermacher/CodeLlama-7b-Instruct-hf-GGUF",
         "provider": "mradermacher"
       }
-    ],
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    ]
   },
   {
     "name": "ibm-granite/granite-4.0-h-tiny",
@@ -1905,7 +1783,7 @@
     "capabilities": [],
     "pipeline_tag": "text-generation",
     "architecture": "granitemoehybrid",
-    "hf_downloads": 85783,
+    "hf_downloads": 87816,
     "hf_likes": 198,
     "release_date": "2025-09-16",
     "num_hidden_layers": 40,
@@ -1925,13 +1803,7 @@
         "repo": "mradermacher/granite-4.0-h-tiny-GGUF",
         "provider": "mradermacher"
       }
-    ],
-    "recommended_settings": {
-      "temperature": 0.0,
-      "min_p": 0.0
-    },
-    "recommended_settings_source": "params",
-    "recommended_settings_notes": []
+    ]
   },
   {
     "name": "openchat/openchat-3.5-0106",
@@ -2008,12 +1880,7 @@
         "repo": "mradermacher/Orca-2-7b-GGUF",
         "provider": "mradermacher"
       }
-    ],
-    "recommended_settings": {
-      "temperature": 0.0
-    },
-    "recommended_settings_source": "readme",
-    "recommended_settings_notes": []
+    ]
   },
   {
     "name": "bigcode/starcoder2-7b",
@@ -2030,16 +1897,13 @@
     "capabilities": [],
     "pipeline_tag": "text-generation",
     "architecture": "starcoder2",
-    "hf_downloads": 16026,
-    "hf_likes": 213,
+    "hf_downloads": 16885,
+    "hf_likes": 214,
     "release_date": "2024-02-20",
     "num_hidden_layers": 32,
     "num_attention_heads": 36,
     "num_key_value_heads": 4,
-    "head_dim": 128,
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    "head_dim": 128
   },
   {
     "name": "tiiuae/falcon-7b-instruct",
@@ -2056,7 +1920,7 @@
     "capabilities": [],
     "pipeline_tag": "text-generation",
     "architecture": "falcon",
-    "hf_downloads": 63412,
+    "hf_downloads": 63947,
     "hf_likes": 1032,
     "release_date": "2023-04-25",
     "num_hidden_layers": 32,
@@ -2068,10 +1932,7 @@
         "repo": "mradermacher/falcon-7b-instruct-GGUF",
         "provider": "mradermacher"
       }
-    ],
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    ]
   },
   {
     "name": "HuggingFaceH4/zephyr-7b-beta",
@@ -2088,7 +1949,7 @@
     "capabilities": [],
     "pipeline_tag": "text-generation",
     "architecture": "mistral",
-    "hf_downloads": 113114,
+    "hf_downloads": 114699,
     "hf_likes": 1842,
     "release_date": "2023-10-26",
     "num_hidden_layers": 32,
@@ -2104,14 +1965,7 @@
         "repo": "mradermacher/zephyr-7b-beta-GGUF",
         "provider": "mradermacher"
       }
-    ],
-    "recommended_settings": {
-      "temperature": 0.7,
-      "top_p": 0.95,
-      "top_k": 50
-    },
-    "recommended_settings_source": "readme",
-    "recommended_settings_notes": []
+    ]
   },
   {
     "name": "mistralai/Mistral-7B-Instruct-v0.3",
@@ -2130,8 +1984,8 @@
     ],
     "pipeline_tag": "unknown",
     "architecture": "mistral",
-    "hf_downloads": 2438784,
-    "hf_likes": 2528,
+    "hf_downloads": 2515320,
+    "hf_likes": 2533,
     "release_date": "2024-05-22",
     "num_hidden_layers": 32,
     "num_attention_heads": 32,
@@ -2146,10 +2000,7 @@
         "repo": "mradermacher/Mistral-7B-Instruct-v0.3-GGUF",
         "provider": "mradermacher"
       }
-    ],
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    ]
   },
   {
     "name": "tiiuae/Falcon3-7B-Instruct",
@@ -2166,7 +2017,7 @@
     "capabilities": [],
     "pipeline_tag": "text-generation",
     "architecture": "llama",
-    "hf_downloads": 20254,
+    "hf_downloads": 20342,
     "hf_likes": 78,
     "release_date": "2024-11-29",
     "num_hidden_layers": 28,
@@ -2182,10 +2033,7 @@
         "repo": "mradermacher/Falcon3-7B-Instruct-GGUF",
         "provider": "mradermacher"
       }
-    ],
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    ]
   },
   {
     "name": "Qwen/Qwen2.5-7B-Instruct",
@@ -2204,8 +2052,8 @@
     ],
     "pipeline_tag": "text-generation",
     "architecture": "qwen2",
-    "hf_downloads": 12284868,
-    "hf_likes": 1217,
+    "hf_downloads": 12297942,
+    "hf_likes": 1219,
     "release_date": "2024-09-16",
     "num_hidden_layers": 28,
     "num_attention_heads": 28,
@@ -2242,8 +2090,8 @@
     ],
     "pipeline_tag": "text-generation",
     "architecture": "qwen2",
-    "hf_downloads": 1779049,
-    "hf_likes": 691,
+    "hf_downloads": 1821984,
+    "hf_likes": 694,
     "release_date": "2024-09-17",
     "num_hidden_layers": 28,
     "num_attention_heads": 28,
@@ -2282,7 +2130,7 @@
     "capabilities": [],
     "pipeline_tag": "text-generation",
     "architecture": "qwen2",
-    "hf_downloads": 604770,
+    "hf_downloads": 600443,
     "hf_likes": 826,
     "release_date": "2025-01-20",
     "num_hidden_layers": 28,
@@ -2302,10 +2150,7 @@
         "repo": "mradermacher/DeepSeek-R1-Distill-Qwen-7B-GGUF",
         "provider": "mradermacher"
       }
-    ],
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    ]
   },
   {
     "name": "google/gemma-4-E4B-it",
@@ -2325,8 +2170,8 @@
     ],
     "pipeline_tag": "any-to-any",
     "architecture": "gemma4",
-    "hf_downloads": 2395486,
-    "hf_likes": 761,
+    "hf_downloads": 2565252,
+    "hf_likes": 772,
     "release_date": "2026-03-02",
     "num_hidden_layers": null,
     "num_attention_heads": null,
@@ -2383,15 +2228,7 @@
         "repo": "mradermacher/gemma-3n-E4B-it-GGUF",
         "provider": "mradermacher"
       }
-    ],
-    "recommended_settings": {
-      "temperature": 1.0,
-      "top_p": 0.95,
-      "top_k": 64,
-      "min_p": 0.0
-    },
-    "recommended_settings_source": "params",
-    "recommended_settings_notes": []
+    ]
   },
   {
     "name": "meta-llama/Llama-3.1-8B",
@@ -2408,16 +2245,13 @@
     "capabilities": [],
     "pipeline_tag": "text-generation",
     "architecture": "llama",
-    "hf_downloads": 1459652,
+    "hf_downloads": 1467537,
     "hf_likes": 2163,
     "release_date": "2024-07-14",
     "num_hidden_layers": null,
     "num_attention_heads": null,
     "num_key_value_heads": null,
-    "head_dim": null,
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    "head_dim": null
   },
   {
     "name": "meta-llama/Llama-3.1-8B-Instruct",
@@ -2436,8 +2270,8 @@
     ],
     "pipeline_tag": "text-generation",
     "architecture": "llama",
-    "hf_downloads": 9306502,
-    "hf_likes": 5730,
+    "hf_downloads": 9460271,
+    "hf_likes": 5738,
     "release_date": "2024-07-18",
     "num_hidden_layers": null,
     "num_attention_heads": null,
@@ -2478,10 +2312,7 @@
         "repo": "mradermacher/Ministral-8B-Instruct-2410-GGUF",
         "provider": "mradermacher"
       }
-    ],
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    ]
   },
   {
     "name": "Qwen/Qwen3-8B",
@@ -2500,8 +2331,8 @@
     ],
     "pipeline_tag": "text-generation",
     "architecture": "qwen3",
-    "hf_downloads": 8692944,
-    "hf_likes": 1051,
+    "hf_downloads": 8793263,
+    "hf_likes": 1055,
     "release_date": "2025-04-27",
     "num_hidden_layers": 36,
     "num_attention_heads": 32,
@@ -2520,15 +2351,7 @@
         "repo": "mradermacher/Qwen3-8B-GGUF",
         "provider": "mradermacher"
       }
-    ],
-    "recommended_settings": {
-      "temperature": 0.6,
-      "top_p": 0.95,
-      "top_k": 20,
-      "min_p": 0.0
-    },
-    "recommended_settings_source": "params",
-    "recommended_settings_notes": []
+    ]
   },
   {
     "name": "Qwen/Qwen2.5-VL-7B-Instruct",
@@ -2548,8 +2371,8 @@
     ],
     "pipeline_tag": "image-text-to-text",
     "architecture": "qwen2_5_vl",
-    "hf_downloads": 8752760,
-    "hf_likes": 1505,
+    "hf_downloads": 8810090,
+    "hf_likes": 1506,
     "release_date": "2025-01-26",
     "num_hidden_layers": 28,
     "num_attention_heads": 28,
@@ -2568,10 +2391,7 @@
         "repo": "mradermacher/Qwen2.5-VL-7B-Instruct-GGUF",
         "provider": "mradermacher"
       }
-    ],
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    ]
   },
   {
     "name": "LiquidAI/LFM2-8B-A1B",
@@ -2588,7 +2408,7 @@
     "capabilities": [],
     "pipeline_tag": "text-generation",
     "architecture": "lfm2_moe",
-    "hf_downloads": 85906,
+    "hf_downloads": 88830,
     "hf_likes": 351,
     "release_date": "2025-10-07",
     "num_hidden_layers": 24,
@@ -2604,13 +2424,7 @@
         "repo": "unsloth/LFM2-8B-A1B-GGUF",
         "provider": "unsloth"
       }
-    ],
-    "recommended_settings": {
-      "temperature": 0.3,
-      "min_p": 0.15
-    },
-    "recommended_settings_source": "readme",
-    "recommended_settings_notes": []
+    ]
   },
   {
     "name": "nvidia/NVIDIA-Nemotron-Nano-9B-v2",
@@ -2627,16 +2441,13 @@
     "capabilities": [],
     "pipeline_tag": "text-generation",
     "architecture": "nemotron_h",
-    "hf_downloads": 526239,
-    "hf_likes": 488,
+    "hf_downloads": 520161,
+    "hf_likes": 489,
     "release_date": "2025-08-12",
     "num_hidden_layers": 56,
     "num_attention_heads": 40,
     "num_key_value_heads": 8,
-    "head_dim": 128,
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    "head_dim": 128
   },
   {
     "name": "google/gemma-2-9b-it",
@@ -2653,7 +2464,7 @@
     "capabilities": [],
     "pipeline_tag": "text-generation",
     "architecture": "gemma2",
-    "hf_downloads": 347937,
+    "hf_downloads": 359785,
     "hf_likes": 792,
     "release_date": "2024-06-24",
     "num_hidden_layers": null,
@@ -2669,10 +2480,7 @@
         "repo": "mradermacher/gemma-2-9b-it-GGUF",
         "provider": "mradermacher"
       }
-    ],
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    ]
   },
   {
     "name": "THUDM/glm-4-9b-chat",
@@ -2689,16 +2497,13 @@
     "capabilities": [],
     "pipeline_tag": "unknown",
     "architecture": "chatglm",
-    "hf_downloads": 391892,
+    "hf_downloads": 407455,
     "hf_likes": 705,
     "release_date": "2024-06-04",
     "num_hidden_layers": 40,
     "num_attention_heads": 32,
     "num_key_value_heads": 32,
-    "head_dim": 128,
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    "head_dim": 128
   },
   {
     "name": "Qwen/Qwen3.5-9B",
@@ -2718,16 +2523,13 @@
     ],
     "pipeline_tag": "image-text-to-text",
     "architecture": "qwen3_5",
-    "hf_downloads": 6481835,
-    "hf_likes": 1312,
+    "hf_downloads": 6602508,
+    "hf_likes": 1324,
     "release_date": "2026-02-27",
     "num_hidden_layers": null,
     "num_attention_heads": null,
     "num_key_value_heads": null,
-    "head_dim": null,
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    "head_dim": null
   },
   {
     "name": "Qwen/Qwen3.5-9B-Base",
@@ -2747,16 +2549,13 @@
     ],
     "pipeline_tag": "image-text-to-text",
     "architecture": "qwen3_5",
-    "hf_downloads": 105019,
+    "hf_downloads": 108712,
     "hf_likes": 64,
     "release_date": "2026-02-26",
     "num_hidden_layers": null,
     "num_attention_heads": null,
     "num_key_value_heads": null,
-    "head_dim": null,
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    "head_dim": null
   },
   {
     "name": "meta-llama/Llama-3.2-11B-Vision-Instruct",
@@ -2776,16 +2575,13 @@
     ],
     "pipeline_tag": "image-text-to-text",
     "architecture": "mllama",
-    "hf_downloads": 177088,
+    "hf_downloads": 159501,
     "hf_likes": 1584,
     "release_date": "2024-09-18",
     "num_hidden_layers": null,
     "num_attention_heads": null,
     "num_key_value_heads": null,
-    "head_dim": null,
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    "head_dim": null
   },
   {
     "name": "upstage/SOLAR-10.7B-Instruct-v1.0",
@@ -2802,16 +2598,13 @@
     "capabilities": [],
     "pipeline_tag": "text-generation",
     "architecture": "llama",
-    "hf_downloads": 58503,
+    "hf_downloads": 59846,
     "hf_likes": 651,
     "release_date": "2023-12-12",
     "num_hidden_layers": 48,
     "num_attention_heads": 32,
     "num_key_value_heads": 8,
-    "head_dim": 128,
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    "head_dim": 128
   },
   {
     "name": "google/gemma-3-12b-it",
@@ -2832,10 +2625,7 @@
     "architecture": "gemma3",
     "hf_downloads": 0,
     "hf_likes": 0,
-    "release_date": null,
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    "release_date": null
   },
   {
     "name": "mistralai/Mistral-Nemo-Instruct-2407",
@@ -2852,10 +2642,7 @@
     "architecture": "mistral",
     "hf_downloads": 0,
     "hf_likes": 0,
-    "release_date": null,
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    "release_date": null
   },
   {
     "name": "microsoft/Orca-2-13b",
@@ -2872,10 +2659,7 @@
     "architecture": "llama",
     "hf_downloads": 0,
     "hf_likes": 0,
-    "release_date": null,
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    "release_date": null
   },
   {
     "name": "lmsys/vicuna-13b-v1.5",
@@ -2892,10 +2676,7 @@
     "architecture": "llama",
     "hf_downloads": 0,
     "hf_likes": 0,
-    "release_date": null,
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    "release_date": null
   },
   {
     "name": "WizardLMTeam/WizardLM-13B-V1.2",
@@ -2912,10 +2693,7 @@
     "architecture": "llama",
     "hf_downloads": 0,
     "hf_likes": 0,
-    "release_date": null,
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    "release_date": null
   },
   {
     "name": "meta-llama/CodeLlama-13b-Instruct-hf",
@@ -2932,16 +2710,13 @@
     "capabilities": [],
     "pipeline_tag": "text-generation",
     "architecture": "llama",
-    "hf_downloads": 2111,
+    "hf_downloads": 2327,
     "hf_likes": 28,
     "release_date": "2024-03-13",
     "num_hidden_layers": null,
     "num_attention_heads": null,
     "num_key_value_heads": null,
-    "head_dim": null,
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    "head_dim": null
   },
   {
     "name": "microsoft/phi-4",
@@ -2958,10 +2733,7 @@
     "architecture": "phi",
     "hf_downloads": 0,
     "hf_likes": 0,
-    "release_date": null,
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    "release_date": null
   },
   {
     "name": "microsoft/Phi-3-medium-14b-instruct",
@@ -2998,10 +2770,7 @@
     "architecture": "phi4",
     "hf_downloads": 0,
     "hf_likes": 0,
-    "release_date": "2025-04-01",
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    "release_date": "2025-04-01"
   },
   {
     "name": "Qwen/Qwen2.5-14B-Instruct",
@@ -3018,10 +2787,7 @@
     "architecture": "qwen2",
     "hf_downloads": 0,
     "hf_likes": 0,
-    "release_date": null,
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    "release_date": null
   },
   {
     "name": "Qwen/Qwen3-14B",
@@ -3038,10 +2804,7 @@
     "architecture": "qwen3",
     "hf_downloads": 0,
     "hf_likes": 0,
-    "release_date": null,
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    "release_date": null
   },
   {
     "name": "Qwen/Qwen2.5-Coder-14B-Instruct",
@@ -3060,16 +2823,13 @@
     ],
     "pipeline_tag": "text-generation",
     "architecture": "qwen2",
-    "hf_downloads": 1045019,
-    "hf_likes": 148,
+    "hf_downloads": 1030633,
+    "hf_likes": 149,
     "release_date": "2024-11-06",
     "num_hidden_layers": 48,
     "num_attention_heads": 40,
     "num_key_value_heads": 8,
-    "head_dim": 128,
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    "head_dim": 128
   },
   {
     "name": "WizardLMTeam/WizardCoder-15B-V1.0",
@@ -3086,10 +2846,7 @@
     "architecture": "starcoder",
     "hf_downloads": 0,
     "hf_likes": 0,
-    "release_date": null,
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    "release_date": null
   },
   {
     "name": "bigcode/starcoder2-15b",
@@ -3106,10 +2863,7 @@
     "architecture": "starcoder2",
     "hf_downloads": 0,
     "hf_likes": 0,
-    "release_date": null,
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    "release_date": null
   },
   {
     "name": "deepseek-ai/DeepSeek-Coder-V2-Lite-Instruct",
@@ -3126,8 +2880,8 @@
     "capabilities": [],
     "pipeline_tag": "text-generation",
     "architecture": "deepseek_v2",
-    "hf_downloads": 564657,
-    "hf_likes": 581,
+    "hf_downloads": 596022,
+    "hf_likes": 582,
     "release_date": "2024-06-14",
     "num_hidden_layers": 27,
     "num_attention_heads": 16,
@@ -3136,10 +2890,7 @@
     "is_moe": true,
     "num_experts": 64,
     "active_experts": 6,
-    "active_parameters": 2400000000,
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    "active_parameters": 2400000000
   },
   {
     "name": "inclusionAI/Ling-lite",
@@ -3156,7 +2907,7 @@
     "capabilities": [],
     "pipeline_tag": "text-generation",
     "architecture": "bailing_moe",
-    "hf_downloads": 474,
+    "hf_downloads": 464,
     "hf_likes": 78,
     "release_date": "2025-02-28",
     "num_hidden_layers": 28,
@@ -3166,10 +2917,7 @@
     "is_moe": true,
     "num_experts": 64,
     "active_experts": 6,
-    "active_parameters": 2336524543,
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    "active_parameters": 2336524543
   },
   {
     "name": "LiquidAI/LFM2-24B-A2B",
@@ -3186,8 +2934,8 @@
     "capabilities": [],
     "pipeline_tag": "text-generation",
     "architecture": "lfm2_moe",
-    "hf_downloads": 37355,
-    "hf_likes": 310,
+    "hf_downloads": 37956,
+    "hf_likes": 311,
     "release_date": "2026-02-24",
     "num_hidden_layers": 40,
     "num_attention_heads": 32,
@@ -3196,10 +2944,7 @@
     "is_moe": true,
     "num_experts": 64,
     "active_experts": 4,
-    "active_parameters": 2300000000,
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    "active_parameters": 2300000000
   },
   {
     "name": "mistralai/Mistral-Small-24B-Instruct-2501",
@@ -3216,10 +2961,7 @@
     "architecture": "mistral",
     "hf_downloads": 0,
     "hf_likes": 0,
-    "release_date": null,
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    "release_date": null
   },
   {
     "name": "google/gemma-4-26B-A4B-it",
@@ -3239,8 +2981,8 @@
     ],
     "pipeline_tag": "image-text-to-text",
     "architecture": "gemma4",
-    "hf_downloads": 3113602,
-    "hf_likes": 748,
+    "hf_downloads": 3285842,
+    "hf_likes": 762,
     "release_date": "2026-03-11",
     "num_hidden_layers": null,
     "num_attention_heads": null,
@@ -3249,10 +2991,7 @@
     "is_moe": true,
     "num_experts": 128,
     "active_experts": 8,
-    "active_parameters": 4000000000,
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    "active_parameters": 4000000000
   },
   {
     "name": "google/gemma-2-27b-it",
@@ -3269,16 +3008,13 @@
     "capabilities": [],
     "pipeline_tag": "text-generation",
     "architecture": "gemma2",
-    "hf_downloads": 71489,
+    "hf_downloads": 60015,
     "hf_likes": 565,
     "release_date": "2024-06-24",
     "num_hidden_layers": null,
     "num_attention_heads": null,
     "num_key_value_heads": null,
-    "head_dim": null,
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    "head_dim": null
   },
   {
     "name": "google/gemma-3-27b-it",
@@ -3298,16 +3034,13 @@
     ],
     "pipeline_tag": "image-text-to-text",
     "architecture": "gemma3",
-    "hf_downloads": 567671,
+    "hf_downloads": 537460,
     "hf_likes": 1956,
     "release_date": "2025-03-01",
     "num_hidden_layers": null,
     "num_attention_heads": null,
     "num_key_value_heads": null,
-    "head_dim": null,
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    "head_dim": null
   },
   {
     "name": "Qwen/Qwen3.5-27B",
@@ -3327,16 +3060,13 @@
     ],
     "pipeline_tag": "image-text-to-text",
     "architecture": "qwen3_5",
-    "hf_downloads": 3247187,
-    "hf_likes": 950,
+    "hf_downloads": 3233034,
+    "hf_likes": 953,
     "release_date": "2026-02-24",
     "num_hidden_layers": null,
     "num_attention_heads": null,
     "num_key_value_heads": null,
-    "head_dim": null,
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    "head_dim": null
   },
   {
     "name": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B-BF16",
@@ -3353,16 +3083,13 @@
     "capabilities": [],
     "pipeline_tag": "text-generation",
     "architecture": "nemotron_h",
-    "hf_downloads": 1481144,
-    "hf_likes": 714,
+    "hf_downloads": 1450155,
+    "hf_likes": 716,
     "release_date": "2025-12-04",
     "num_hidden_layers": 52,
     "num_attention_heads": 32,
     "num_key_value_heads": 2,
-    "head_dim": 128,
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    "head_dim": 128
   },
   {
     "name": "LGAI-EXAONE/EXAONE-4.0-32B",
@@ -3379,16 +3106,13 @@
     "capabilities": [],
     "pipeline_tag": "text-generation",
     "architecture": "exaone4",
-    "hf_downloads": 23688,
+    "hf_downloads": 24707,
     "hf_likes": 282,
     "release_date": "2025-07-11",
     "num_hidden_layers": 64,
     "num_attention_heads": 40,
     "num_key_value_heads": 8,
-    "head_dim": 128,
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    "head_dim": 128
   },
   {
     "name": "allenai/OLMo-2-0325-32B-Instruct",
@@ -3405,16 +3129,13 @@
     "capabilities": [],
     "pipeline_tag": "text-generation",
     "architecture": "olmo2",
-    "hf_downloads": 16093,
+    "hf_downloads": 16322,
     "hf_likes": 148,
     "release_date": "2025-03-12",
     "num_hidden_layers": 64,
     "num_attention_heads": 40,
     "num_key_value_heads": 8,
-    "head_dim": 128,
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    "head_dim": 128
   },
   {
     "name": "Qwen/Qwen2.5-32B-Instruct",
@@ -3431,10 +3152,7 @@
     "architecture": "qwen2",
     "hf_downloads": 0,
     "hf_likes": 0,
-    "release_date": null,
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    "release_date": null
   },
   {
     "name": "google/gemma-4-31B-it",
@@ -3454,16 +3172,13 @@
     ],
     "pipeline_tag": "image-text-to-text",
     "architecture": "gemma4",
-    "hf_downloads": 4237068,
-    "hf_likes": 2198,
+    "hf_downloads": 4465127,
+    "hf_likes": 2236,
     "release_date": "2026-03-11",
     "num_hidden_layers": null,
     "num_attention_heads": null,
     "num_key_value_heads": null,
-    "head_dim": null,
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    "head_dim": null
   },
   {
     "name": "Qwen/Qwen2.5-Coder-32B-Instruct",
@@ -3482,16 +3197,13 @@
     ],
     "pipeline_tag": "text-generation",
     "architecture": "qwen2",
-    "hf_downloads": 1217931,
-    "hf_likes": 2007,
+    "hf_downloads": 1257495,
+    "hf_likes": 2008,
     "release_date": "2024-11-06",
     "num_hidden_layers": 64,
     "num_attention_heads": 40,
     "num_key_value_heads": 8,
-    "head_dim": 128,
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    "head_dim": 128
   },
   {
     "name": "deepseek-ai/DeepSeek-R1-Distill-Qwen-32B",
@@ -3508,16 +3220,13 @@
     "capabilities": [],
     "pipeline_tag": "text-generation",
     "architecture": "qwen2",
-    "hf_downloads": 1044980,
-    "hf_likes": 1542,
+    "hf_downloads": 1046750,
+    "hf_likes": 1545,
     "release_date": "2025-01-20",
     "num_hidden_layers": 64,
     "num_attention_heads": 40,
     "num_key_value_heads": 8,
-    "head_dim": 128,
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    "head_dim": 128
   },
   {
     "name": "meta-llama/CodeLlama-34b-Instruct-hf",
@@ -3536,16 +3245,13 @@
     ],
     "pipeline_tag": "text-generation",
     "architecture": "llama",
-    "hf_downloads": 848,
+    "hf_downloads": 815,
     "hf_likes": 19,
     "release_date": "2024-03-14",
     "num_hidden_layers": null,
     "num_attention_heads": null,
     "num_key_value_heads": null,
-    "head_dim": null,
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    "head_dim": null
   },
   {
     "name": "01-ai/Yi-34B-Chat",
@@ -3562,10 +3268,7 @@
     "architecture": "yi",
     "hf_downloads": 0,
     "hf_likes": 0,
-    "release_date": null,
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    "release_date": null
   },
   {
     "name": "CohereForAI/c4ai-command-r-v01",
@@ -3582,10 +3285,7 @@
     "architecture": "cohere",
     "hf_downloads": 0,
     "hf_likes": 0,
-    "release_date": null,
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    "release_date": null
   },
   {
     "name": "Qwen/Qwen3.5-35B-A3B",
@@ -3605,8 +3305,8 @@
     ],
     "pipeline_tag": "image-text-to-text",
     "architecture": "qwen3_5_moe",
-    "hf_downloads": 3940049,
-    "hf_likes": 1392,
+    "hf_downloads": 3977637,
+    "hf_likes": 1396,
     "release_date": "2026-02-24",
     "num_hidden_layers": null,
     "num_attention_heads": null,
@@ -3615,10 +3315,47 @@
     "is_moe": true,
     "num_experts": 256,
     "active_experts": 8,
+    "active_parameters": 3000000000
+  },
+  {
+    "name": "Qwen/Qwen3.6-35B-A3B",
+    "provider": "Alibaba",
+    "parameter_count": "36.0B",
+    "parameters_raw": 35951822704,
+    "min_ram_gb": 20.1,
+    "recommended_ram_gb": 33.5,
+    "min_vram_gb": 18.4,
+    "quantization": "Q4_K_M",
+    "format": "gguf",
+    "context_length": 262144,
+    "use_case": "General purpose",
+    "capabilities": [
+      "vision",
+      "tool_use"
+    ],
+    "pipeline_tag": "image-text-to-text",
+    "architecture": "qwen3_5_moe",
+    "hf_downloads": 458436,
+    "hf_likes": 1091,
+    "release_date": "2026-04-15",
+    "num_hidden_layers": null,
+    "num_attention_heads": null,
+    "num_key_value_heads": null,
+    "head_dim": null,
+    "is_moe": true,
+    "num_experts": 256,
+    "active_experts": 8,
     "active_parameters": 3000000000,
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    "gguf_sources": [
+      {
+        "repo": "unsloth/Qwen3.6-35B-A3B-GGUF",
+        "provider": "unsloth"
+      },
+      {
+        "repo": "ggml-org/Qwen3.6-35B-A3B-GGUF",
+        "provider": "ggml-org"
+      }
+    ]
   },
   {
     "name": "tiiuae/falcon-40b-instruct",
@@ -3635,10 +3372,7 @@
     "architecture": "falcon",
     "hf_downloads": 0,
     "hf_likes": 0,
-    "release_date": null,
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    "release_date": null
   },
   {
     "name": "mistralai/Mixtral-8x7B-Instruct-v0.1",
@@ -3657,7 +3391,7 @@
     ],
     "pipeline_tag": "unknown",
     "architecture": "mixtral",
-    "hf_downloads": 609734,
+    "hf_downloads": 618386,
     "hf_likes": 4669,
     "release_date": "2023-12-10",
     "num_hidden_layers": 32,
@@ -3667,10 +3401,7 @@
     "is_moe": true,
     "num_experts": 8,
     "active_experts": 2,
-    "active_parameters": 12900000000,
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    "active_parameters": 12900000000
   },
   {
     "name": "NousResearch/Nous-Hermes-2-Mixtral-8x7B-DPO",
@@ -3689,7 +3420,7 @@
     ],
     "pipeline_tag": "text-generation",
     "architecture": "mixtral",
-    "hf_downloads": 8633,
+    "hf_downloads": 8651,
     "hf_likes": 452,
     "release_date": "2024-01-11",
     "num_hidden_layers": 32,
@@ -3699,10 +3430,7 @@
     "is_moe": true,
     "num_experts": 8,
     "active_experts": 2,
-    "active_parameters": 12900000000,
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    "active_parameters": 12900000000
   },
   {
     "name": "meta-llama/Llama-3.1-70B-Instruct",
@@ -3721,16 +3449,13 @@
     ],
     "pipeline_tag": "text-generation",
     "architecture": "llama",
-    "hf_downloads": 737459,
+    "hf_downloads": 717618,
     "hf_likes": 907,
     "release_date": "2024-07-16",
     "num_hidden_layers": null,
     "num_attention_heads": null,
     "num_key_value_heads": null,
-    "head_dim": null,
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    "head_dim": null
   },
   {
     "name": "meta-llama/Llama-3.3-70B-Instruct",
@@ -3749,16 +3474,13 @@
     ],
     "pipeline_tag": "text-generation",
     "architecture": "llama",
-    "hf_downloads": 496024,
-    "hf_likes": 2731,
+    "hf_downloads": 507071,
+    "hf_likes": 2734,
     "release_date": "2024-11-26",
     "num_hidden_layers": null,
     "num_attention_heads": null,
     "num_key_value_heads": null,
-    "head_dim": null,
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    "head_dim": null
   },
   {
     "name": "Qwen/Qwen2.5-72B-Instruct",
@@ -3777,16 +3499,13 @@
     ],
     "pipeline_tag": "text-generation",
     "architecture": "qwen2",
-    "hf_downloads": 457915,
-    "hf_likes": 927,
+    "hf_downloads": 448337,
+    "hf_likes": 929,
     "release_date": "2024-09-16",
     "num_hidden_layers": 80,
     "num_attention_heads": 64,
     "num_key_value_heads": 8,
-    "head_dim": 128,
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    "head_dim": 128
   },
   {
     "name": "Qwen/Qwen3-Coder-Next",
@@ -3805,8 +3524,8 @@
     ],
     "pipeline_tag": "text-generation",
     "architecture": "qwen3_next",
-    "hf_downloads": 646521,
-    "hf_likes": 1310,
+    "hf_downloads": 632223,
+    "hf_likes": 1317,
     "release_date": "2026-01-30",
     "num_hidden_layers": 48,
     "num_attention_heads": 16,
@@ -3815,10 +3534,7 @@
     "is_moe": true,
     "num_experts": 512,
     "active_experts": 10,
-    "active_parameters": 3000000000,
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    "active_parameters": 3000000000
   },
   {
     "name": "Qwen/Qwen3.5-122B-A10B",
@@ -3838,8 +3554,8 @@
     ],
     "pipeline_tag": "image-text-to-text",
     "architecture": "qwen3_5_moe",
-    "hf_downloads": 906547,
-    "hf_likes": 523,
+    "hf_downloads": 913350,
+    "hf_likes": 524,
     "release_date": "2026-02-24",
     "num_hidden_layers": null,
     "num_attention_heads": null,
@@ -3848,10 +3564,7 @@
     "is_moe": true,
     "num_experts": 256,
     "active_experts": 8,
-    "active_parameters": 10000000000,
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    "active_parameters": 10000000000
   },
   {
     "name": "mistralai/Mixtral-8x22B-Instruct-v0.1",
@@ -3870,7 +3583,7 @@
     ],
     "pipeline_tag": "unknown",
     "architecture": "mixtral",
-    "hf_downloads": 27608,
+    "hf_downloads": 28279,
     "hf_likes": 748,
     "release_date": "2024-04-16",
     "num_hidden_layers": 56,
@@ -3900,16 +3613,13 @@
     "capabilities": [],
     "pipeline_tag": "text-generation",
     "architecture": "dots1",
-    "hf_downloads": 9801,
+    "hf_downloads": 10228,
     "hf_likes": 176,
     "release_date": "2025-05-14",
     "num_hidden_layers": 62,
     "num_attention_heads": 32,
     "num_key_value_heads": 32,
-    "head_dim": 128,
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    "head_dim": 128
   },
   {
     "name": "bigscience/bloom",
@@ -3926,16 +3636,13 @@
     "capabilities": [],
     "pipeline_tag": "text-generation",
     "architecture": "bloom",
-    "hf_downloads": 6577,
+    "hf_downloads": 6623,
     "hf_likes": 4998,
     "release_date": "2022-05-19",
     "num_hidden_layers": null,
     "num_attention_heads": 112,
     "num_key_value_heads": 112,
-    "head_dim": null,
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    "head_dim": null
   },
   {
     "name": "tiiuae/falcon-180B-chat",
@@ -3952,16 +3659,13 @@
     "capabilities": [],
     "pipeline_tag": "text-generation",
     "architecture": "falcon",
-    "hf_downloads": 648,
+    "hf_downloads": 646,
     "hf_likes": 547,
     "release_date": "2023-09-04",
     "num_hidden_layers": null,
     "num_attention_heads": null,
     "num_key_value_heads": null,
-    "head_dim": null,
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    "head_dim": null
   },
   {
     "name": "MiniMaxAI/MiniMax-M2.7",
@@ -3978,8 +3682,8 @@
     "capabilities": [],
     "pipeline_tag": "text-generation",
     "architecture": "minimax_m2",
-    "hf_downloads": 314205,
-    "hf_likes": 987,
+    "hf_downloads": 358255,
+    "hf_likes": 1015,
     "release_date": "2026-04-09",
     "num_hidden_layers": 62,
     "num_attention_heads": 48,
@@ -3988,10 +3692,7 @@
     "is_moe": true,
     "num_experts": 256,
     "active_experts": 8,
-    "active_parameters": 10000000000,
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    "active_parameters": 10000000000
   },
   {
     "name": "MiniMaxAI/MiniMax-M2.5",
@@ -4008,8 +3709,8 @@
     "capabilities": [],
     "pipeline_tag": "text-generation",
     "architecture": "minimax_m2",
-    "hf_downloads": 928266,
-    "hf_likes": 1461,
+    "hf_downloads": 935204,
+    "hf_likes": 1462,
     "release_date": "2026-02-12",
     "num_hidden_layers": 62,
     "num_attention_heads": 48,
@@ -4018,10 +3719,7 @@
     "is_moe": true,
     "num_experts": 256,
     "active_experts": 8,
-    "active_parameters": 10000000000,
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    "active_parameters": 10000000000
   },
   {
     "name": "Qwen/Qwen3-235B-A22B",
@@ -4040,8 +3738,8 @@
     ],
     "pipeline_tag": "text-generation",
     "architecture": "qwen3_moe",
-    "hf_downloads": 567344,
-    "hf_likes": 1090,
+    "hf_downloads": 589589,
+    "hf_likes": 1091,
     "release_date": "2025-04-27",
     "num_hidden_layers": 94,
     "num_attention_heads": 64,
@@ -4050,10 +3748,7 @@
     "is_moe": true,
     "num_experts": 128,
     "active_experts": 8,
-    "active_parameters": 22000000000,
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    "active_parameters": 22000000000
   },
   {
     "name": "baidu/ERNIE-4.5-300B-A47B-Paddle",
@@ -4070,16 +3765,13 @@
     "capabilities": [],
     "pipeline_tag": "text-generation",
     "architecture": "ernie4_5_moe",
-    "hf_downloads": 348,
+    "hf_downloads": 341,
     "hf_likes": 13,
     "release_date": "2025-06-28",
     "num_hidden_layers": 54,
     "num_attention_heads": 64,
     "num_key_value_heads": 8,
-    "head_dim": 128,
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    "head_dim": 128
   },
   {
     "name": "XiaomiMiMo/MiMo-V2-Flash",
@@ -4096,16 +3788,13 @@
     "capabilities": [],
     "pipeline_tag": "text-generation",
     "architecture": "mimo_v2_flash",
-    "hf_downloads": 65191,
-    "hf_likes": 714,
+    "hf_downloads": 66226,
+    "hf_likes": 716,
     "release_date": "2025-12-16",
     "num_hidden_layers": 48,
     "num_attention_heads": 64,
     "num_key_value_heads": 4,
-    "head_dim": 192,
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    "head_dim": 192
   },
   {
     "name": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
@@ -4124,8 +3813,8 @@
     ],
     "pipeline_tag": "image-text-to-text",
     "architecture": "llama4",
-    "hf_downloads": 30153,
-    "hf_likes": 478,
+    "hf_downloads": 30421,
+    "hf_likes": 479,
     "release_date": "2025-04-01",
     "num_hidden_layers": null,
     "num_attention_heads": null,
@@ -4134,10 +3823,7 @@
     "is_moe": true,
     "num_experts": 16,
     "active_experts": 1,
-    "active_parameters": 17000000000,
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    "active_parameters": 17000000000
   },
   {
     "name": "Qwen/Qwen3.5-397B-A17B",
@@ -4157,8 +3843,8 @@
     ],
     "pipeline_tag": "image-text-to-text",
     "architecture": "qwen3_5_moe",
-    "hf_downloads": 710153,
-    "hf_likes": 1461,
+    "hf_downloads": 631843,
+    "hf_likes": 1467,
     "release_date": "2026-02-16",
     "num_hidden_layers": null,
     "num_attention_heads": null,
@@ -4173,10 +3859,7 @@
         "repo": "mradermacher/Qwen3.5-397B-A17B-GGUF",
         "provider": "mradermacher"
       }
-    ],
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    ]
   },
   {
     "name": "meta-llama/Llama-3.1-405B-Instruct",
@@ -4195,16 +3878,13 @@
     ],
     "pipeline_tag": "text-generation",
     "architecture": "llama",
-    "hf_downloads": 235616,
+    "hf_downloads": 235783,
     "hf_likes": 595,
     "release_date": "2024-07-16",
     "num_hidden_layers": null,
     "num_attention_heads": null,
     "num_key_value_heads": null,
-    "head_dim": null,
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    "head_dim": null
   },
   {
     "name": "Qwen/Qwen3-Coder-480B-A35B-Instruct",
@@ -4223,8 +3903,8 @@
     ],
     "pipeline_tag": "text-generation",
     "architecture": "qwen3_moe",
-    "hf_downloads": 57687,
-    "hf_likes": 1325,
+    "hf_downloads": 55845,
+    "hf_likes": 1326,
     "release_date": "2025-07-22",
     "num_hidden_layers": 62,
     "num_attention_heads": 96,
@@ -4239,15 +3919,7 @@
         "repo": "unsloth/Qwen3-Coder-480B-A35B-Instruct-GGUF",
         "provider": "unsloth"
       }
-    ],
-    "recommended_settings": {
-      "temperature": 0.7,
-      "top_p": 0.8,
-      "top_k": 20,
-      "min_p": 0.0
-    },
-    "recommended_settings_source": "params",
-    "recommended_settings_notes": []
+    ]
   },
   {
     "name": "deepseek-ai/DeepSeek-V3",
@@ -4264,7 +3936,7 @@
     "capabilities": [],
     "pipeline_tag": "text-generation",
     "architecture": "deepseek_v3",
-    "hf_downloads": 882009,
+    "hf_downloads": 893429,
     "hf_likes": 4056,
     "release_date": "2024-12-25",
     "num_hidden_layers": 61,
@@ -4300,8 +3972,8 @@
     "capabilities": [],
     "pipeline_tag": "text-generation",
     "architecture": "deepseek_v3",
-    "hf_downloads": 3945733,
-    "hf_likes": 13280,
+    "hf_downloads": 4020320,
+    "hf_likes": 13288,
     "release_date": "2025-01-20",
     "num_hidden_layers": 61,
     "num_attention_heads": 128,
@@ -4320,10 +3992,7 @@
         "repo": "bartowski/DeepSeek-R1-GGUF",
         "provider": "bartowski"
       }
-    ],
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    ]
   },
   {
     "name": "deepseek-ai/DeepSeek-V3.2-Speciale",
@@ -4364,8 +4033,8 @@
     "capabilities": [],
     "pipeline_tag": "text-generation",
     "architecture": "deepseek_v32",
-    "hf_downloads": 10366446,
-    "hf_likes": 1413,
+    "hf_downloads": 10558888,
+    "hf_likes": 1416,
     "release_date": "2025-12-01",
     "num_hidden_layers": 61,
     "num_attention_heads": 128,
@@ -4399,8 +4068,8 @@
     "capabilities": [],
     "pipeline_tag": "text-generation",
     "architecture": "glm_moe_dsa",
-    "hf_downloads": 477667,
-    "hf_likes": 2070,
+    "hf_downloads": 467925,
+    "hf_likes": 2072,
     "release_date": "2026-02-11",
     "num_hidden_layers": 78,
     "num_attention_heads": 64,
@@ -4411,10 +4080,7 @@
         "repo": "unsloth/GLM-5-GGUF",
         "provider": "unsloth"
       }
-    ],
-    "recommended_settings": null,
-    "recommended_settings_source": null,
-    "recommended_settings_notes": []
+    ]
   },
   {
     "name": "moonshotai/Kimi-K2-Instruct",
@@ -4431,7 +4097,7 @@
     "capabilities": [],
     "pipeline_tag": "text-generation",
     "architecture": "kimi_k2",
-    "hf_downloads": 276135,
+    "hf_downloads": 295748,
     "hf_likes": 2352,
     "release_date": "2025-07-11",
     "num_hidden_layers": 61,
@@ -4443,12 +4109,7 @@
         "repo": "unsloth/Kimi-K2-Instruct-GGUF",
         "provider": "unsloth"
       }
-    ],
-    "recommended_settings": {
-      "temperature": 0.6
-    },
-    "recommended_settings_source": "readme",
-    "recommended_settings_notes": []
+    ]
   },
   {
     "name": "moonshotai/Kimi-K2.5",
@@ -4467,8 +4128,8 @@
     ],
     "pipeline_tag": "image-text-to-text",
     "architecture": "kimi_k25",
-    "hf_downloads": 5222216,
-    "hf_likes": 2752,
+    "hf_downloads": 5231254,
+    "hf_likes": 2755,
     "release_date": "2026-01-01",
     "num_hidden_layers": null,
     "num_attention_heads": null,
