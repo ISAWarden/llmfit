@@ -526,6 +526,9 @@ fn map_to_llm_model(hf: HfApiModel, token: Option<&str>) -> Option<LlmModel> {
         head_dim,
         attention_layout: crate::models::infer_attention_layout_from_name(&hf.id),
         license,
+        recommended_settings: None,
+        recommended_settings_source: None,
+        recommended_settings_notes: vec![],
     })
 }
 

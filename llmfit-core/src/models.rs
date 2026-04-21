@@ -268,6 +268,15 @@ pub struct LlmModel {
     /// Model license (e.g. "apache-2.0", "mit", "llama3.1")
     #[serde(default)]
     pub license: Option<String>,
+    /// Safe, explicit GGUF generation defaults extracted by the scraper.
+    #[serde(default)]
+    pub recommended_settings: Option<RecommendedSettings>,
+    /// Source file that provided the explicit generation defaults.
+    #[serde(default)]
+    pub recommended_settings_source: Option<String>,
+    /// Scraper notes about accepted or rejected default extraction.
+    #[serde(default)]
+    pub recommended_settings_notes: Vec<String>,
 }
 
 /// Composition of attention layers in a hybrid model.
@@ -282,6 +291,18 @@ pub struct AttentionLayout {
     pub full: u32,
     /// Number of linear / state space layers (not compressible by KV quant).
     pub linear: u32,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+pub struct RecommendedSettings {
+    #[serde(default)]
+    pub temperature: Option<f64>,
+    #[serde(default)]
+    pub top_p: Option<f64>,
+    #[serde(default)]
+    pub top_k: Option<u32>,
+    #[serde(default)]
+    pub min_p: Option<f64>,
 }
 
 impl AttentionLayout {
@@ -674,6 +695,12 @@ struct HfModelEntry {
     head_dim: Option<u32>,
     #[serde(default)]
     license: Option<String>,
+    #[serde(default)]
+    recommended_settings: Option<RecommendedSettings>,
+    #[serde(default)]
+    recommended_settings_source: Option<String>,
+    #[serde(default)]
+    recommended_settings_notes: Vec<String>,
 }
 
 const HF_MODELS_JSON: &str = include_str!("../data/hf_models.json");
@@ -729,6 +756,9 @@ fn load_embedded() -> Vec<LlmModel> {
                 head_dim: e.head_dim,
                 attention_layout: None,
                 license: e.license,
+                recommended_settings: e.recommended_settings,
+                recommended_settings_source: e.recommended_settings_source,
+                recommended_settings_notes: e.recommended_settings_notes,
             };
             model.capabilities = Capability::infer(&model);
             // Auto-populate attention_layout from name heuristic for known
@@ -1020,6 +1050,9 @@ mod tests {
             head_dim: None,
             attention_layout: None,
             license: None,
+            recommended_settings: None,
+            recommended_settings_source: None,
+            recommended_settings_notes: vec![],
         };
 
         // Large budget should return mlx-8bit (best in MLX hierarchy)
@@ -1097,6 +1130,9 @@ mod tests {
             head_dim: None,
             attention_layout: None,
             license: None,
+            recommended_settings: None,
+            recommended_settings_source: None,
+            recommended_settings_notes: vec![],
         };
         assert_eq!(model.params_b(), 7.0);
     }
@@ -1128,6 +1164,9 @@ mod tests {
             head_dim: None,
             attention_layout: None,
             license: None,
+            recommended_settings: None,
+            recommended_settings_source: None,
+            recommended_settings_notes: vec![],
         };
         assert_eq!(model.params_b(), 13.0);
     }
@@ -1159,6 +1198,9 @@ mod tests {
             head_dim: None,
             attention_layout: None,
             license: None,
+            recommended_settings: None,
+            recommended_settings_source: None,
+            recommended_settings_notes: vec![],
         };
         assert_eq!(model.params_b(), 0.5);
     }
@@ -1190,6 +1232,9 @@ mod tests {
             head_dim: None,
             attention_layout: None,
             license: None,
+            recommended_settings: None,
+            recommended_settings_source: None,
+            recommended_settings_notes: vec![],
         };
 
         let mem = model.estimate_memory_gb("Q4_K_M", 4096);
@@ -1229,6 +1274,9 @@ mod tests {
             head_dim: None,
             attention_layout: None,
             license: None,
+            recommended_settings: None,
+            recommended_settings_source: None,
+            recommended_settings_notes: vec![],
         };
 
         // Large budget should return best quant
@@ -1274,6 +1322,9 @@ mod tests {
             head_dim: None,
             attention_layout: None,
             license: None,
+            recommended_settings: None,
+            recommended_settings_source: None,
+            recommended_settings_notes: vec![],
         };
         assert!(dense_model.moe_active_vram_gb().is_none());
 
@@ -1303,6 +1354,9 @@ mod tests {
             head_dim: None,
             attention_layout: None,
             license: None,
+            recommended_settings: None,
+            recommended_settings_source: None,
+            recommended_settings_notes: vec![],
         };
         let vram = moe_model.moe_active_vram_gb();
         assert!(vram.is_some());
@@ -1340,6 +1394,9 @@ mod tests {
             head_dim: None,
             attention_layout: None,
             license: None,
+            recommended_settings: None,
+            recommended_settings_source: None,
+            recommended_settings_notes: vec![],
         };
         assert!(dense_model.moe_offloaded_ram_gb().is_none());
 
@@ -1369,6 +1426,9 @@ mod tests {
             head_dim: None,
             attention_layout: None,
             license: None,
+            recommended_settings: None,
+            recommended_settings_source: None,
+            recommended_settings_notes: vec![],
         };
         let offloaded = moe_model.moe_offloaded_ram_gb();
         assert!(offloaded.is_some());
@@ -1408,6 +1468,9 @@ mod tests {
             head_dim: None,
             attention_layout: None,
             license: None,
+            recommended_settings: None,
+            recommended_settings_source: None,
+            recommended_settings_notes: vec![],
         };
         assert_eq!(UseCase::from_model(&model), UseCase::Coding);
     }
@@ -1439,6 +1502,9 @@ mod tests {
             head_dim: None,
             attention_layout: None,
             license: None,
+            recommended_settings: None,
+            recommended_settings_source: None,
+            recommended_settings_notes: vec![],
         };
         assert_eq!(UseCase::from_model(&model), UseCase::Embedding);
     }
@@ -1470,6 +1536,9 @@ mod tests {
             head_dim: None,
             attention_layout: None,
             license: None,
+            recommended_settings: None,
+            recommended_settings_source: None,
+            recommended_settings_notes: vec![],
         };
         assert_eq!(UseCase::from_model(&model), UseCase::Reasoning);
     }
@@ -1553,6 +1622,9 @@ mod tests {
             head_dim: None,
             attention_layout: None,
             license: None,
+            recommended_settings: None,
+            recommended_settings_source: None,
+            recommended_settings_notes: vec![],
         };
         let caps = Capability::infer(&model);
         assert!(caps.contains(&Capability::Vision));
@@ -1587,6 +1659,9 @@ mod tests {
             head_dim: None,
             attention_layout: None,
             license: None,
+            recommended_settings: None,
+            recommended_settings_source: None,
+            recommended_settings_notes: vec![],
         };
         let caps = Capability::infer(&model);
         assert!(caps.contains(&Capability::ToolUse));
@@ -1620,6 +1695,9 @@ mod tests {
             head_dim: None,
             attention_layout: None,
             license: None,
+            recommended_settings: None,
+            recommended_settings_source: None,
+            recommended_settings_notes: vec![],
         };
         let caps = Capability::infer(&model);
         assert!(caps.is_empty());
@@ -1652,6 +1730,9 @@ mod tests {
             head_dim: None,
             attention_layout: None,
             license: None,
+            recommended_settings: None,
+            recommended_settings_source: None,
+            recommended_settings_notes: vec![],
         };
         let caps = Capability::infer(&model);
         // Should keep the explicit Vision and not duplicate it
@@ -1819,6 +1900,9 @@ mod tests {
             head_dim: None,
             attention_layout: None,
             license: None,
+            recommended_settings: None,
+            recommended_settings_source: None,
+            recommended_settings_notes: vec![],
         }
     }
 
@@ -1922,6 +2006,9 @@ mod tests {
             head_dim: Some(128),
             attention_layout: None,
             license: None,
+            recommended_settings: None,
+            recommended_settings_source: None,
+            recommended_settings_notes: vec![],
         }
     }
 

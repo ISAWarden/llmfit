@@ -853,6 +853,9 @@ mod tests {
             head_dim: None,
             attention_layout: None,
             license: None,
+            recommended_settings: None,
+            recommended_settings_source: None,
+            recommended_settings_notes: vec![],
         }
     }
 
