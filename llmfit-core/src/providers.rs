@@ -5,6 +5,26 @@
 
 use std::collections::HashSet;
 use std::path::PathBuf;
+use std::process::Command;
+
+#[cfg(target_os = "windows")]
+const CREATE_NO_WINDOW: u32 = 0x08000000;
+
+fn hidden_command(program: impl AsRef<std::ffi::OsStr>) -> Command {
+    let mut command = Command::new(program);
+    hide_command_window(&mut command);
+    command
+}
+
+#[cfg(target_os = "windows")]
+fn hide_command_window(command: &mut Command) {
+    use std::os::windows::process::CommandExt;
+
+    command.creation_flags(CREATE_NO_WINDOW);
+}
+
+#[cfg(not(target_os = "windows"))]
+fn hide_command_window(_command: &mut Command) {}
 
 // ---------------------------------------------------------------------------
 // Provider trait
@@ -411,7 +431,7 @@ static MLX_PYTHON_AVAILABLE: std::sync::OnceLock<bool> = std::sync::OnceLock::ne
 
 fn check_mlx_python() -> bool {
     *MLX_PYTHON_AVAILABLE.get_or_init(|| {
-        std::process::Command::new("python3")
+        hidden_command("python3")
             .args(["-c", "import mlx_lm"])
             .stdout(std::process::Stdio::null())
             .stderr(std::process::Stdio::null())
@@ -548,7 +568,7 @@ impl ModelProvider for MlxProvider {
             });
 
             // Download from Hugging Face using their CLI tool
-            let result = std::process::Command::new(&hf_bin)
+            let result = hidden_command(&hf_bin)
                 .args(["download", &repo_for_thread])
                 .stdout(std::process::Stdio::piped())
                 .stderr(std::process::Stdio::piped())
@@ -1270,7 +1290,7 @@ fn find_binary(name: &str) -> Option<String> {
 /// health endpoint. Returns `true` if the server responds.
 fn probe_llama_server(base_url: &str) -> bool {
     let url = format!("{}/health", base_url.trim_end_matches('/'));
-    std::process::Command::new("curl")
+    hidden_command("curl")
         .args(["-sf", "--max-time", "2", &url])
         .stdout(std::process::Stdio::null())
         .stderr(std::process::Stdio::null())
@@ -1504,7 +1524,7 @@ impl ModelProvider for DockerModelRunnerProvider {
                 percent: None,
             });
 
-            let result = std::process::Command::new("docker")
+            let result = hidden_command("docker")
                 .args(["model", "pull", &tag])
                 .stdout(std::process::Stdio::piped())
                 .stderr(std::process::Stdio::piped())

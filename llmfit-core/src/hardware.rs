@@ -1,5 +1,25 @@
 use std::collections::BTreeMap;
+use std::process::Command;
 use sysinfo::System;
+
+#[cfg(target_os = "windows")]
+const CREATE_NO_WINDOW: u32 = 0x08000000;
+
+fn hidden_command(program: &str) -> Command {
+    let mut command = Command::new(program);
+    hide_command_window(&mut command);
+    command
+}
+
+#[cfg(target_os = "windows")]
+fn hide_command_window(command: &mut Command) {
+    use std::os::windows::process::CommandExt;
+
+    command.creation_flags(CREATE_NO_WINDOW);
+}
+
+#[cfg(not(target_os = "windows"))]
+fn hide_command_window(_command: &mut Command) {}
 
 /// The acceleration backend for inference speed estimation.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, serde::Serialize)]
@@ -281,7 +301,7 @@ impl SystemSpecs {
         }
 
         // Fallback: standard 2-column query for older nvidia-smi versions
-        let output = match std::process::Command::new("nvidia-smi")
+        let output = match hidden_command("nvidia-smi")
             .arg("--query-gpu=memory.total,name")
             .arg("--format=csv,noheader,nounits")
             .output()
@@ -302,7 +322,7 @@ impl SystemSpecs {
     /// query fails (e.g. older driver that doesn't support the field), so the
     /// caller can fall back to the standard query.
     fn try_nvidia_smi_with_addressing_mode() -> Option<Vec<GpuInfo>> {
-        let output = std::process::Command::new("nvidia-smi")
+        let output = hidden_command("nvidia-smi")
             .arg("--query-gpu=addressing_mode,memory.total,name")
             .arg("--format=csv,noheader,nounits")
             .output()
@@ -531,7 +551,7 @@ impl SystemSpecs {
     /// Parses per-card VRAM and GPU name from rocm-smi output.
     fn detect_amd_gpu_rocm_info() -> Option<GpuInfo> {
         // Try rocm-smi --showmeminfo vram for VRAM
-        let vram_output = std::process::Command::new("rocm-smi")
+        let vram_output = hidden_command("rocm-smi")
             .arg("--showmeminfo")
             .arg("vram")
             .output()
@@ -582,7 +602,7 @@ impl SystemSpecs {
         };
 
         // Try to get GPU name from rocm-smi --showproductname
-        let gpu_name = std::process::Command::new("rocm-smi")
+        let gpu_name = hidden_command("rocm-smi")
             .arg("--showproductname")
             .output()
             .ok()
@@ -763,7 +783,7 @@ impl SystemSpecs {
 
     /// Read lspci output, with host fallback for containerized environments.
     fn lspci_output() -> Option<String> {
-        let local = std::process::Command::new("lspci")
+        let local = hidden_command("lspci")
             .arg("-nnD")
             .output()
             .ok()
@@ -774,7 +794,7 @@ impl SystemSpecs {
             return local;
         }
 
-        std::process::Command::new("flatpak-spawn")
+        hidden_command("flatpak-spawn")
             .args(["--host", "lspci", "-nnD"])
             .output()
             .ok()
@@ -828,7 +848,7 @@ impl SystemSpecs {
         }
 
         // Use PowerShell to query WMI — more reliable than wmic (deprecated)
-        if let Ok(output) = std::process::Command::new("powershell")
+        if let Ok(output) = hidden_command("powershell")
             .arg("-NoProfile")
             .arg("-Command")
             .arg("Get-CimInstance Win32_VideoController | Select-Object Name,AdapterRAM | ForEach-Object { $_.Name + '|' + $_.AdapterRAM }")
@@ -848,7 +868,7 @@ impl SystemSpecs {
 
     /// Fallback Windows GPU detection via wmic (works on older systems).
     fn detect_gpu_windows_wmic_list() -> Vec<GpuInfo> {
-        let output = match std::process::Command::new("wmic")
+        let output = match hidden_command("wmic")
             .arg("path")
             .arg("win32_VideoController")
             .arg("get")
@@ -1085,7 +1105,7 @@ impl SystemSpecs {
     /// fluctuate with current usage the way available RAM does.
     fn detect_apple_gpu(total_ram_gb: f64) -> Option<f64> {
         // system_profiler only exists on macOS
-        let output = std::process::Command::new("system_profiler")
+        let output = hidden_command("system_profiler")
             .arg("SPDisplaysDataType")
             .output()
             .ok()?;
@@ -1142,12 +1162,9 @@ impl SystemSpecs {
             return Vec::new();
         }
 
-        let output = match std::process::Command::new("vulkaninfo")
-            .arg("--summary")
-            .output()
-        {
+        let output = match hidden_command("vulkaninfo").arg("--summary").output() {
             Ok(o) if o.status.success() => o,
-            _ => match std::process::Command::new("vulkaninfo").output() {
+            _ => match hidden_command("vulkaninfo").output() {
                 Ok(o) if o.status.success() => o,
                 _ => return Vec::new(),
             },
@@ -1242,10 +1259,7 @@ impl SystemSpecs {
     /// Detect Ascend NPUs via npu-smi. Returns a vector of NPU info.
     fn detect_ascend_npus() -> Vec<GpuInfo> {
         // 1. Get the list of IDs
-        let list_output = match std::process::Command::new("npu-smi")
-            .args(["info", "-l"])
-            .output()
-        {
+        let list_output = match hidden_command("npu-smi").args(["info", "-l"]).output() {
             Ok(o) if o.status.success() => o,
             _ => return Vec::new(),
         };
@@ -1269,7 +1283,7 @@ impl SystemSpecs {
 
         // 2. Loop through NPUs
         for id in &ids {
-            let mem_output = std::process::Command::new("npu-smi")
+            let mem_output = hidden_command("npu-smi")
                 .args(["info", "-t", "memory", "-i", id])
                 .output();
 
@@ -1320,7 +1334,7 @@ impl SystemSpecs {
     /// Parse macOS `vm_stat` to compute available memory.
     /// Available ≈ (free + inactive + purgeable) * page_size
     fn available_ram_from_vm_stat() -> Option<f64> {
-        let output = std::process::Command::new("vm_stat").output().ok()?;
+        let output = hidden_command("vm_stat").output().ok()?;
         if !output.status.success() {
             return None;
         }
@@ -1430,7 +1444,7 @@ impl SystemSpecs {
     fn read_android_soc_name() -> Option<String> {
         #[cfg(target_os = "linux")]
         {
-            let output = std::process::Command::new("getprop")
+            let output = hidden_command("getprop")
                 .arg("ro.soc.model")
                 .output()
                 .ok()?;
@@ -1673,7 +1687,7 @@ fn detect_windows_physical_total_ram_gb() -> Option<f64> {
     if !cfg!(target_os = "windows") {
         return None;
     }
-    let output = std::process::Command::new("powershell")
+    let output = hidden_command("powershell")
         .args([
             "-NoProfile",
             "-Command",
